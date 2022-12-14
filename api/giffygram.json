@@ -1,0 +1,8 @@
+{
+  "users": [{
+    "id": 1,
+    "name": "Daniella Agnoletti",
+    "email": "daniella@agnoletti.com",
+    "password": "daniella"
+  }]
+}
