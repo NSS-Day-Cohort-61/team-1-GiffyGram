@@ -10,3 +10,17 @@ const applicationState = {
         displayMessages: false
     }
 }
+
+export const fetchUsers = () => {
+    return fetch(`${apiURL}/users`)
+        .then(response => response.json())
+        .then(
+            (data) => {
+                applicationState.users = data
+            }
+        )
+}
+
+export const getUsers = () => {
+    return applicationState.users.map(user => ({...user}))
+}
