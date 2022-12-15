@@ -1,5 +1,6 @@
 import { LoginForm } from "../auth/Login.js"
 
+
 export const Navigation = () => {
     return `
         <nav class="navigation">
@@ -7,7 +8,7 @@ export const Navigation = () => {
                 <img src="/images/pb.png" alt="Giffygram icon" id="logo">
             </div>
             <div class="navigation__item navigation__name">
-                Giffygram
+                Giffygram 
             </div>
             <div class="navigation__item navigation__search"> </div>
             <div class="navigation__item navigation__message">
