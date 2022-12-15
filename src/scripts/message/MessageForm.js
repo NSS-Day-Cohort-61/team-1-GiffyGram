@@ -8,8 +8,9 @@ export const createDirectMessage = () => {
     return `
     <div class="messageForm">
         <form>
-            <fieldset>
-                <label for="recipient">Recipient:</label>
+        <div>
+        <label for="recipient">Recipient:</label>
+            <select>
                 <option type="text" name="recipient" value="0">"Choose a recipient.." </option>
                 ${
                     users.map(
@@ -18,14 +19,14 @@ export const createDirectMessage = () => {
                         }
                     ).join("")
                 }
-            </fieldset>
-            <fieldset>
-                <label for="message">Message:</label>
-                <textarea name="message" class="newPost_input newPost__description" placeholder="Story behind your gif..."></textarea>
-            </fieldset>
+            </select>
+            </div>
+            <label for="message">Message:</label><br>
+            <input type="text" name="message" autofocus placeholder="Message to user" />
+           
         </form>
-        <button id="loginButton">Login</button>
-        <button id="registerButton">Register</button>
+        <button id="loginButton">Save</button>
+        <button id="registerButton">Cancel</button>
     </div>
 `
 }
