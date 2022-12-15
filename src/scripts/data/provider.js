@@ -13,6 +13,7 @@ const applicationState = {
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: true,
+    displaySinceYear: parseInt(Date().getFullYear())
   },
   posts: [],
   favorites: []
@@ -34,6 +35,9 @@ export const fetchPosts = () => {
     });
 };
 
+export const getDisplaySinceYear = () => {
+  return applicationState.feed.displaySinceYear;
+}
 export const fetchFavorites = () => {
   return fetch(`${apiURL}/favorites`)
     .then((response) => response.json())
@@ -68,8 +72,12 @@ export const setPostEntryStatus = (input) => {
 };
 
 export const setCurrentUser = (inputUser) => {
-  applicationState.currentUser = inputUser;
-};
+  applicationState.currentUser = inputUser
+}
+
+export const setDisplaySinceYear = (inputYear) => {
+  applicationState.feed.displaySinceYear = inputYear
+}
 
 export const sendPostEntry = (postObj) => {
   const fetchOptions = {

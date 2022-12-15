@@ -6,19 +6,21 @@ import { getUsers, getPosts, sendFavorites } from "../data/provider.js";
 //description
 //posted by NAME on DATE
 //favorite star + trashcan
-const todaysDate = new Date().toDateString();
-export const postList = () => {
-  const newPost = getPosts();
-  newPost.reverse();
-  let html = `${postEntryForm()}`;
-  newPost.map((post) => {
-    const users = getUsers();
-    let foundUser = users.find((user) => {
-      if (post.userId === user.id) {
-        return user;
-      }
-    });
-    html += `
+const todaysDate = new Date().toDateString()
+export const postList = () =>{
+    const newPost = getPosts()
+    newPost.reverse();
+    const displayYear = getDisplaySinceYear();
+    filteredPosts = newPost.filter(post => post.date <= displayYear)
+    let html = `${postEntryForm()}`
+    filteredPosts.map(post =>{
+        const users = getUsers()
+        let foundUser = users.find(user =>{
+                if(post.userId===user.id){
+                    return user
+                }
+            })
+        html += `
                 <section class="post" id="${post.id}">
                     <h2 class="post__title">${post.postTitle}</h2>
                         <div>

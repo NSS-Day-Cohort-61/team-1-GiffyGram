@@ -1,13 +1,15 @@
+import { setDisplaySinceYear } from "../data/provider.js"
+
 export const Footer = () => {
     return `
         <footer class="footer">
             <div class="footer__item">
                 Posts since
                 <select id="yearSelection">
-                    <option>2020</option>
-                    <option>2019</option>
-                    <option>2018</option>
-                    <option>2017</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018>2018</option>
+                    <option value="2017">2017</option>
                 </select>
                 <span id="postCount">[POSTCOUNT]<span>
             </div>
@@ -16,10 +18,7 @@ export const Footer = () => {
                 <select class="userSelection">
                     <option>Ray Medrano</option>
                     <option>Mark Ellis</option>
-                    <option>Daniella Agnoletti</option>
-                    <option>Kimmy Bird</option>
-                    <option>Emily Lemmon</option>
-                </select>
+                    <option>D
             </div>
             <div class="footer__item">
                 Show only favorites
@@ -27,3 +26,12 @@ export const Footer = () => {
             </div>
        </footer> `
 }
+
+const applicationElement = document.querySelector(".giffygram")
+
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "yearSelection") {
+        setDisplaySinceYear(clickEvent.target.value)
+        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
