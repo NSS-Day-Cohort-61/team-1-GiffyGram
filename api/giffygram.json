@@ -5,6 +5,12 @@
       "name": "Daniella Agnoletti",
       "email": "daniella@agnoletti.com",
       "password": "daniella"
+    },
+    {
+      "name": "marek",
+      "email": "marek@s.com",
+      "password": "marek",
+      "id": 2
     }
   ],
   "posts": [
