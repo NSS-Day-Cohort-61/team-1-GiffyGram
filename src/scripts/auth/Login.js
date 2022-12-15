@@ -1,5 +1,4 @@
 import { getUsers, setCurrentUser } from "../data/provider.js"
-import { createDirectMessage } from "../message/MessageForm.js"
 import { RegisterForm } from "./Register.js"
 
 
@@ -59,7 +58,7 @@ export const LoginForm = () => {
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "registerButton") {
-        document.querySelector(".giffygram").innerHTML = createDirectMessage()
+        document.querySelector(".giffygram").innerHTML = RegisterForm()
     }
 })
 

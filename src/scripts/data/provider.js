@@ -9,8 +9,8 @@ const applicationState = {
     displayMessages: false,
     displayPostEntry: true,
   },
-  users:[],
   posts:[],
+  users:[],
   messages:[]
 };
 
