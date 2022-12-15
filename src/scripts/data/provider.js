@@ -3,6 +3,7 @@ const applicationElement = document.querySelector(".giffygram");
 
 const applicationState = {
   currentUser: {},
+  posts: [],
   feed: {
     chosenUser: null,
     displayFavorites: false,
@@ -10,6 +11,7 @@ const applicationState = {
     displayPostEntry: true,
     displaySinceYear: parseInt(Date().getFullYear())
   },
+  posts: []
 };
 
 export const fetchUsers = () => {
@@ -22,11 +24,11 @@ export const fetchUsers = () => {
 
 export const fetchPosts = () => {
   return fetch(`${apiURL}/posts`)
-  .then((response) => response.json())
-  .then((data) => {
-    applicationState.posts = data
-  })
-}
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.posts = data;
+    });
+};
 
 export const getPostEntryStatus = () => {
   return applicationState.feed.displayPostEntry;
@@ -41,8 +43,8 @@ export const getPosts = () => {
 };
 
 export const getCurrentUser = () => {
-  return applicationState.currentUser.map((u) => ({...u}))
-}
+  return {...applicationState.currentUser}
+};
 
 export const setPostEntryStatus = (input) => {
   applicationState.feed.displayPostEntry = input;
@@ -72,3 +74,19 @@ export const sendPostEntry = (postObj) => {
       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+export const sendUsers = (userServiceRequest) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userServiceRequest)
+  }
+
+
+  return fetch(`${apiURL}/users`, fetchOptions)
+      .then(response => response.json())
+      .then(() => {
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+      })
+}

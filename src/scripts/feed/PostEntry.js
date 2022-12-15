@@ -1,4 +1,4 @@
-import { getPostEntryStatus, setPostEntryStatus, sendPostEntry } from "../data/provider.js"
+import { getPostEntryStatus, setPostEntryStatus, sendPostEntry, getCurrentUser } from "../data/provider.js"
 
 export const postEntryForm = () => {
   if (!getPostEntryStatus()) {
@@ -39,11 +39,14 @@ document.addEventListener("click", (event) => {
     const postTitle = document.querySelector("input[name='postTitle']").value
     const postURL = document.querySelector("input[name='postURL']").value
     const postDescription = document.querySelector("textarea[name='postDescription']").value
-    
+    const currentUser = getCurrentUser();
+
     const postInformation = {
       postTitle: postTitle,
       postURL: postURL,
-      postDescription: postDescription
+      postDescription: postDescription,
+      userId: currentUser.id,
+      date: new Date()
     }
     sendPostEntry(postInformation)
   }
