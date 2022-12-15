@@ -15,5 +15,12 @@
       "userId": 1,
       "id": 1
     }
+  ],
+  "messages": [
+    {
+      "userId": 1,
+      "message": "example 1",
+      "date": "12-15-2022"
+    }
   ]
 }

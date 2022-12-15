@@ -9,6 +9,9 @@ const applicationState = {
     displayMessages: false,
     displayPostEntry: true,
   },
+  users:[],
+  posts:[],
+  messages:[]
 };
 
 export const fetchUsers = () => {
@@ -18,7 +21,13 @@ export const fetchUsers = () => {
       applicationState.users = data;
     });
 };
-
+export const fetchMessages = () => {
+  return fetch(`${apiURL}/messages`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.messages = data;
+    });
+};
 export const fetchPosts = () => {
   return fetch(`${apiURL}/posts`)
     .then((response) => response.json())
@@ -37,6 +46,9 @@ export const getUsers = () => {
 
 export const getPosts = () => {
   return applicationState.posts.map((p) => ({ ...p }));
+};
+export const getMessages = () => {
+  return applicationState.messages.map((p) => ({ ...p }));
 };
 
 export const getCurrentUser = () => {
