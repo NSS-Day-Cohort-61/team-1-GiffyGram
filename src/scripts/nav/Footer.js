@@ -6,10 +6,10 @@ export const Footer = () => {
             <div class="footer__item">
                 Posts since
                 <select id="yearSelection">
-                    <option>2020</option>
-                    <option>2019</option>
-                    <option>2018</option>
-                    <option>2017</option>
+                    <option value="2020">2020</option>
+                    <option value="2019">2019</option>
+                    <option value="2018>2018</option>
+                    <option value="2017">2017</option>
                 </select>
                 <span id="postCount">[POSTCOUNT]<span>
             </div>
@@ -36,7 +36,7 @@ const applicationElement = document.querySelector(".giffygram")
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "yearSelection") {
         for(const post of posts) {
-            if()
+            if(post.date >= )
         }
     }
 })
