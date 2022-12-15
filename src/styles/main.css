@@ -46,9 +46,25 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
-.loginForm {
-    margin: 0 25%;
+.loginForm, .registerForm {
+   
+    height: 90vh;
+    margin: 10vh 15vh 0vh;
+   
 }
+.loginDetails, .registerDetails {
+    /* border: 2px solid blue; */
+    padding: 0px 0px 10px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+.register {
+    margin: 10px 0px;
+    width: 100%;
+}
+
+
 
 #logo {
     cursor: pointer;
