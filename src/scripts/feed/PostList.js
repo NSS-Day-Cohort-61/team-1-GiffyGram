@@ -8,7 +8,7 @@ import { postEntryForm } from "./PostEntry.js"
 const todaysDate = new Date().toDateString()
 export const postList = () =>{
     let html = 
-    `<div class=giffygram__feed">
+    `<div class="giffygram__feed">
         ${postEntryForm()}
         <section class="post" id="1">
             <h2 class="post__title">boo!</h2>
