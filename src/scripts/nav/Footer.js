@@ -1,3 +1,5 @@
+import { getPosts } from "../data/provider.js"
+
 export const Footer = () => {
     return `
         <footer class="footer">
@@ -27,3 +29,14 @@ export const Footer = () => {
             </div>
        </footer> `
 }
+
+const posts = getPosts()
+const applicationElement = document.querySelector(".giffygram")
+
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "yearSelection") {
+        for(const post of posts) {
+            if()
+        }
+    }
+})

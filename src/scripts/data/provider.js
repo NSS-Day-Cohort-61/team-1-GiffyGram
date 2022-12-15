@@ -3,6 +3,7 @@ const applicationElement = document.querySelector(".giffygram");
 
 const applicationState = {
   currentUser: {},
+  posts: [],
   feed: {
     chosenUser: null,
     displayFavorites: false,
