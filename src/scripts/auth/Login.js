@@ -1,4 +1,4 @@
-import { getUsers } from "../data/provider.js"
+import { getUsers, setCurrentUser } from "../data/provider.js"
 
 
 document.addEventListener("click", clickEvent => {
@@ -17,6 +17,7 @@ document.addEventListener("click", clickEvent => {
 
         if (foundUser !== null) {
             localStorage.setItem("gg_user", foundUser.id)
+            setCurrentUser(foundUser)
             document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
