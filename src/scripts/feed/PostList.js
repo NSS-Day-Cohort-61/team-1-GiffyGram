@@ -19,9 +19,9 @@ const todaysDate = new Date().toDateString()
 export const postList = () =>{
     const newPost = getPosts()
     const displayYear = getDisplaySinceYear();
-    filteredPostsByDate = newPost.filter(post => post.date <= displayYear)
+    filteredPosts = newPost.filter(post => post.date <= displayYear)
     let html = `${postEntryForm()}`
-    newPost.map(post =>{
+    filteredPosts.map(post =>{
         const users = getUsers()
         let foundUser = users.find(user =>{
                 if(parseInt(post.userId)===parseInt(user.id)){
