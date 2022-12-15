@@ -29,6 +29,17 @@
       "userId": 1,
       "date": "2022-12-15T19:38:32.404Z",
       "id": 2
+    },
+    {
+      "postTitle": "Me at 4:00 every day",
+      "postURL": "https://i.giphy.com/media/kSiwMBRDhbqoM/giphy.webp",
+      "postDescription": "#feelsgood",
+      "date": "2022-12-15T20:38:06.439Z",
+      "id": 3,
+      "userId": 1
     }
+  ],
+  "favorites": [
+
   ]
 }
