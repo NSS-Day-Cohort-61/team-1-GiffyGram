@@ -39,10 +39,18 @@ export const getPosts = () => {
   return applicationState.posts.map((p) => ({ ...p }));
 };
 
+export const getCurrentUser = () => {
+  return applicationState.currentUser.map((u) => ({...u}))
+}
+
 export const setPostEntryStatus = (input) => {
   applicationState.feed.displayPostEntry = input;
   applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
 };
+
+export const setCurrentUser = (inputUser) => {
+  applicationState.currentUser = inputUser
+}
 
 export const sendPostEntry = (postObj) => {
   const fetchOptions = {
