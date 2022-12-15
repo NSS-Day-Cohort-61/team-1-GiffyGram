@@ -9,6 +9,8 @@ const applicationState = {
     displayMessages: false,
     displayPostEntry: true,
   },
+  posts: [],
+  favorites: []
 };
 
 export const fetchUsers = () => {
@@ -27,6 +29,14 @@ export const fetchPosts = () => {
     });
 };
 
+export const fetchFavorites = () => {
+  return fetch(`${apiURL}/favorites`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.favorites = data;
+    });
+};
+
 export const getPostEntryStatus = () => {
   return applicationState.feed.displayPostEntry;
 };
@@ -39,8 +49,12 @@ export const getPosts = () => {
   return applicationState.posts.map((p) => ({ ...p }));
 };
 
+export const getFavorites = () => {
+  return applicationState.favorites.map((f) => ({ ...f }));
+};
+
 export const getCurrentUser = () => {
-  return {...applicationState.currentUser}
+  return { ...applicationState.currentUser };
 };
 
 export const setPostEntryStatus = (input) => {
@@ -66,4 +80,18 @@ export const sendPostEntry = (postObj) => {
     .then(() => {
       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     });
+};
+
+export const sendFavorites = (favObj) => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(favObj),
+  };
+
+  return fetch(`${apiURL}/favorites`, fetchOptions)
+    .then((response) => response.json())
+    .then(() => {});
 };
