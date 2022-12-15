@@ -32,5 +32,6 @@ const applicationElement = document.querySelector(".giffygram")
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "yearSelection") {
         setDisplaySinceYear(clickEvent.target.value)
+        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })

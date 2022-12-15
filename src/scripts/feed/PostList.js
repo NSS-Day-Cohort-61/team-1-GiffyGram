@@ -1,4 +1,4 @@
-import { getPosts, getUsers } from "../data/provider.js"
+import { getPosts, getUsers, getDisplaySinceYear } from "../data/provider.js"
 import { postEntryForm } from "./PostEntry.js"
 
 
@@ -18,6 +18,8 @@ import { postEntryForm } from "./PostEntry.js"
 const todaysDate = new Date().toDateString()
 export const postList = () =>{
     const newPost = getPosts()
+    const displayYear = getDisplaySinceYear();
+    filteredPostsByDate = newPost.filter(post => post.date <= displayYear)
     let html = `${postEntryForm()}`
     newPost.map(post =>{
         const users = getUsers()

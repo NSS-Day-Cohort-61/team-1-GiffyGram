@@ -30,6 +30,10 @@ export const fetchPosts = () => {
     });
 };
 
+export const getDisplaySinceYear = () => {
+  return applicationState.feed.displaySinceYear;
+}
+
 export const getPostEntryStatus = () => {
   return applicationState.feed.displayPostEntry;
 };
