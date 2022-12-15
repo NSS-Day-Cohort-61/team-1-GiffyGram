@@ -1,4 +1,5 @@
 import { getUsers } from "../data/provider.js"
+import { RegisterForm } from "./Register.js"
 
 
 document.addEventListener("click", clickEvent => {
@@ -40,3 +41,11 @@ export const LoginForm = () => {
         </div>
     `
 }
+
+// const applicationElement = document.querySelector(".giffygram")
+
+document.addEventListener("click", clickEvent => {
+    if (clickEvent.target.id === "registerButton") {
+        document.querySelector(".giffygram").innerHTML = RegisterForm()
+    }
+})

@@ -48,6 +48,14 @@ h1, h2, h3, h4, h5, h6 {
 .loginForm {
     margin: 0 25%;
 }
+.registerForm {
+    background-color: rgb(147, 219, 219);
+    height: 100vh;
+    padding: 12px;
+}
+fieldset {
+    
+}
 
 #logo {
     cursor: pointer;

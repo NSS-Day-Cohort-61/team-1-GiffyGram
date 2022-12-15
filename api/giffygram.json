@@ -1,8 +1,28 @@
 {
-  "users": [{
-    "id": 1,
-    "name": "Daniella Agnoletti",
-    "email": "daniella@agnoletti.com",
-    "password": "daniella"
-  }]
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniella Agnoletti",
+      "email": "daniella@agnoletti.com",
+      "password": "daniella"
+    },
+    {
+      "name": "marek",
+      "email": "marek@s.com",
+      "password": "marek",
+      "id": 2
+    },
+    {
+      "name": "marek",
+      "email": "marek@s.com",
+      "password": "marek",
+      "id": 3
+    },
+    {
+      "name": "",
+      "email": "",
+      "password": "",
+      "id": 4
+    }
+  ]
 }
