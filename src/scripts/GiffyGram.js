@@ -1,10 +1,10 @@
-import { postEntryForm } from "./feed/PostEntry.js"
-
+import { Footer } from "./nav/Footer.js"
+import { Navigation } from "./nav/Navigation.js"
+import { postList } from "./feed/PostList.js"
 export const GiffyGram = () => {
 
     // Show main main UI
-    return `
-    <h1>Giffygram</h1>
-    ${postEntryForm()}
-    `
+    return `${Navigation()}
+            ${postList()}
+            ${Footer()}`
 }
