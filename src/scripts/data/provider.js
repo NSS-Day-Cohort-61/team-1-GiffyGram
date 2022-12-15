@@ -9,6 +9,7 @@ const applicationState = {
     displayMessages: false,
     displayPostEntry: true,
   },
+  posts: []
 };
 
 export const fetchUsers = () => {
