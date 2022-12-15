@@ -1,3 +1,8 @@
+import {
+    setDisplayFavorites,
+    getDisplayFavorites
+  } from "../data/provider.js";
+
 export const Footer = () => {
     return `
         <footer class="footer">
@@ -27,3 +32,13 @@ export const Footer = () => {
             </div>
        </footer> `
 }
+
+document.addEventListener("click", (event) => {
+    if (event.target.id === "showOnlyFavorites") {
+      if (getDisplayFavorites()) {
+        setDisplayFavorites(false);
+      } else {
+        setDisplayFavorites(true);
+      }
+    }
+  });

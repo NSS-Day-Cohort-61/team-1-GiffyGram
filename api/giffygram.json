@@ -40,6 +40,10 @@
     }
   ],
   "favorites": [
-
+    {
+      "postId": 1,
+      "userId": 1,
+      "id": 1
+    }
   ]
 }

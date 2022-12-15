@@ -6,7 +6,7 @@ const applicationState = {
     id: 1,
     name: "Daniella Agnoletti",
     email: "daniella@agnoletti.com",
-    password: "daniella"
+    password: "daniella",
   },
   feed: {
     chosenUser: null,
@@ -15,7 +15,7 @@ const applicationState = {
     displayPostEntry: true,
   },
   posts: [],
-  favorites: []
+  favorites: [],
 };
 
 export const fetchUsers = () => {
@@ -62,6 +62,10 @@ export const getCurrentUser = () => {
   return { ...applicationState.currentUser };
 };
 
+export const getDisplayFavorites = () => {
+  return applicationState.feed.displayFavorites;
+};
+
 export const setPostEntryStatus = (input) => {
   applicationState.feed.displayPostEntry = input;
   applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
@@ -69,6 +73,11 @@ export const setPostEntryStatus = (input) => {
 
 export const setCurrentUser = (inputUser) => {
   applicationState.currentUser = inputUser;
+};
+
+export const setDisplayFavorites = (input) => {
+  applicationState.feed.displayFavorites = input;
+  applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
 };
 
 export const sendPostEntry = (postObj) => {
@@ -103,17 +112,16 @@ export const sendFavorites = (favObj) => {
 
 export const sendUsers = (userServiceRequest) => {
   const fetchOptions = {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userServiceRequest)
-  }
-
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userServiceRequest),
+  };
 
   return fetch(`${apiURL}/users`, fetchOptions)
-      .then(response => response.json())
-      .then(() => {
-          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-      })
-}
+    .then((response) => response.json())
+    .then(() => {
+      mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+    });
+};
