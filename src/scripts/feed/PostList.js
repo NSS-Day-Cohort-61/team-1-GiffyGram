@@ -21,10 +21,7 @@ export const postList = () => {
     html += `
                 <section class="post" id="${post.id}">
                     <h2 class="post__title">${post.postTitle}</h2>
-                        <div class="post__image">
-                            <img src="${post.postURL}">
-                        </div>
-    
+                            <img class="post__image" src="${post.postURL}">
                         <div class="post__description">
                             ${post.postDescription}
                         </div>
