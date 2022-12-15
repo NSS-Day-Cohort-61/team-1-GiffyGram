@@ -1,17 +1,25 @@
+
 const apiURL = "http://localhost:8088";
 const applicationElement = document.querySelector(".giffygram");
 
 const applicationState = {
-  currentUser: {},
+  currentUser: {
+    id: 1,
+    name: "Daniella Agnoletti",
+    email: "daniella@agnoletti.com",
+    password: "daniella"
+  },
   feed: {
     chosenUser: null,
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: true,
+    // displaySinceYear: parseInt(Date().getFullYear())
   },
   posts:[],
   users:[],
-  messages:[]
+  messages:[],
+  favorites: []
 };
 
 export const fetchUsers = () => {
@@ -36,6 +44,17 @@ export const fetchPosts = () => {
     });
 };
 
+export const getDisplaySinceYear = () => {
+  return applicationState.feed.displaySinceYear;
+}
+export const fetchFavorites = () => {
+  return fetch(`${apiURL}/favorites`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.favorites = data;
+    });
+};
+
 export const getPostEntryStatus = () => {
   return applicationState.feed.displayPostEntry;
 };
@@ -51,8 +70,12 @@ export const getMessages = () => {
   return applicationState.messages.map((p) => ({ ...p }));
 };
 
+export const getFavorites = () => {
+  return applicationState.favorites.map((f) => ({ ...f }));
+};
+
 export const getCurrentUser = () => {
-  return {...applicationState.currentUser}
+  return { ...applicationState.currentUser };
 };
 
 export const setPostEntryStatus = (input) => {
@@ -61,8 +84,12 @@ export const setPostEntryStatus = (input) => {
 };
 
 export const setCurrentUser = (inputUser) => {
-  applicationState.currentUser = inputUser;
-};
+  applicationState.currentUser = inputUser
+}
+
+export const setDisplaySinceYear = (inputYear) => {
+  applicationState.feed.displaySinceYear = inputYear
+}
 
 export const sendPostEntry = (postObj) => {
   const fetchOptions = {
@@ -79,6 +106,21 @@ export const sendPostEntry = (postObj) => {
       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+
+export const sendFavorites = (favObj) => {
+  const fetchOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(favObj),
+  };
+
+  return fetch(`${apiURL}/favorites`, fetchOptions)
+    .then((response) => response.json())
+    .then(() => {});
+};
+
 export const sendUsers = (userServiceRequest) => {
   const fetchOptions = {
       method: "POST",
