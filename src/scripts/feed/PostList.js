@@ -6,10 +6,10 @@
 const todaysDate = new Date().toDateString()
 export const postList = () =>{
     let html = 
-    `<section class="giffygram__feed">
+    `<section class="post" id="1">
         <h2 class="post__title">boo!</h2>
             <div class="post__image">
-                <img src="https://i.giphy.com/media/3o6ZtrtQMscwc87A6Q/giphy.gif">
+                <img id="1" src="https://i.giphy.com/media/3o6ZtrtQMscwc87A6Q/giphy.gif">
             </div>
 
             <div class="post__description">
@@ -21,8 +21,8 @@ export const postList = () =>{
             </div>
 
             <div class="post__actions">
-                <img src="https://spng.pngfind.com/pngs/s/2-20080_28-collection-of-mario-star-clipart-super-mario.png" height="20" width="20">
-                <img src="https://toppng.com/uploads/preview/trash-can-11530995314kgh8pawz8u.png" height="20" width="20">
+                <img id="favoritePost" src="https://spng.pngfind.com/pngs/s/2-20080_28-collection-of-mario-star-clipart-super-mario.png" height="25" width="25">
+                <img id="blockPost" src="https://toppng.com/uploads/preview/trash-can-11530995314kgh8pawz8u.png" height="25" width="25">
             </div>
     </section>`
     return html
