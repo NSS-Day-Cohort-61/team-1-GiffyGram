@@ -1,4 +1,5 @@
 import { sendUsers } from "../data/provider.js"
+import { LoginForm } from "./Login.js"
 
 
 
@@ -9,28 +10,32 @@ export const RegisterForm = () => {
         <img src="/images/pb.png" alt="Giffygram icon" id="logo">
     </div>
     <div class="navigation__item navigation__name">
-        Giffygram
+   Find and Share your gifs today!
     </div>
     </nav> 
 
 
     <div class="registerForm">
-        <h2> Sign Up To Find And Share Your Giftastic Gifs Today!</h2>
-        <form>
+    <form class="registerDetails">
+    <h2> Create Account</h2>
             <fieldset class="register">
             <label for="name">Name:</label>
                     <input type="text" name="name" autofocus placeholder="Name" />
+                
+            </fieldset>
+            <fieldset class="register">
+           
                 <label for="email">Email:</label>
                 <input type="text" name="email" autofocus placeholder="Email address" />
             </fieldset>
-            <fieldset>
+            <fieldset class="register">
                 <label for="password">Password:</label>
                 <input type="password" name="password" placeholder="Password" />
                 <input type="password" name="confirmPassword" placeholder="Confirm Password" />
             </fieldset>
+            <button id="registerButton">Sign Up</button>
+            <button id="returnButton">Return to Login</button>
         </form>
-        <button id="registerButton">Sign Up</button>
-        <button id="returnButton">Return to Login</button>
     </div>
 `
 }
@@ -71,6 +76,6 @@ document.addEventListener("click", clickEvent => {
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "returnButton") {
-        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+        document.querySelector(".giffygram").innerHTML = LoginForm()
     }
 })

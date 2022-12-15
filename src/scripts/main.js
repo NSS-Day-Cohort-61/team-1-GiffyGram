@@ -9,8 +9,12 @@ export const renderApp = () =>  {
     fetchUsers()
     .then(() => fetchPosts())
         .then(() => {
-           
+            if (user) {
+                applicationElement.innerHTML = GiffyGram()
+                
+            } else {
                 applicationElement.innerHTML = LoginForm()
+            }
             
         })
 

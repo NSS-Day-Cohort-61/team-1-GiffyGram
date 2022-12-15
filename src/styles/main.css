@@ -8,6 +8,7 @@
 /*Typography
 --------------------------------------------------------------*/
 
+
 body, button, input, select, textarea {
     color: #404040;
     font-family: "Comfortaa", Arial, sans-serif;
@@ -46,9 +47,21 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .loginForm, .registerForm {
-    margin: 10vh 15vh 0vh;
    
     height: 90vh;
+    margin: 10vh 15vh 0vh;
+   
+}
+.loginDetails, .registerDetails {
+    /* border: 2px solid blue; */
+    padding: 0px 0px 10px 0px;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+}
+.register {
+    margin: 10px 0px;
+    width: 100%;
 }
 
 
