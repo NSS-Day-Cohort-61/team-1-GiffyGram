@@ -19,7 +19,16 @@
       "postURL": "https://i.giphy.com/media/cklPOHnHepdwBLRnQp/200.webp",
       "postDescription": "#blessed",
       "userId": 1,
+      "date": "2022-12-15T19:38:32.404Z",
       "id": 1
+    },
+    {
+      "postTitle": "boo!",
+      "postURL": "https://i.giphy.com/media/3o6ZtrtQMscwc87A6Q/giphy.gif",
+      "postDescription": "cute ghost doggo :)",
+      "userId": 1,
+      "date": "2022-12-15T19:38:32.404Z",
+      "id": 2
     }
   ]
 }
