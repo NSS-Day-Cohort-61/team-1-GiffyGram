@@ -1,10 +1,12 @@
 import { postEntryForm } from "./PostEntry.js";
-import { getUsers, getPosts, sendFavorites, getDisplayFavorites, getFavorites } from "../data/provider.js";
+import { getUsers, getPosts, sendFavorites, getDisplayFavorites, getFavorites, getDisplaySinceYear } from "../data/provider.js";
 
 const todaysDate = new Date().toDateString();
 export const postList = () => {
   let posts = getPosts();
   posts.reverse();
+  const displayYear = getDisplaySinceYear();
+  const filteredPosts = newPost.filter(post => post.date.substr(0, 4) <= displayYear)
   let html = `${postEntryForm()}`;
   if (getDisplayFavorites()){
     posts = favoritesFilter(posts)

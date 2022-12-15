@@ -5,7 +5,7 @@ export const GiffyGram = () => {
 
     // Show main main UI
     return `${Navigation()}
-    <div class="giffygram__feed">
+            <div class="giffygram__feed">
             ${postList()}
             </div>
             ${Footer()}`
