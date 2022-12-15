@@ -45,17 +45,15 @@ h1, h2, h3, h4, h5, h6 {
     font-weight: bold;
 }
 
-.loginForm {
-    margin: 0 25%;
+.loginForm, .registerForm {
+    margin: 10vh 15vh 0vh;
+   
+    height: 90vh;
 }
-.registerForm {
-    background-color: rgb(147, 219, 219);
-    height: 100vh;
-    padding: 12px;
+.giffygram {
+    background-color: rgb(182, 245, 245);
 }
-fieldset {
-    
-}
+
 
 #logo {
     cursor: pointer;

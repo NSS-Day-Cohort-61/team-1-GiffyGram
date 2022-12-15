@@ -25,7 +25,18 @@ document.addEventListener("click", clickEvent => {
 
 export const LoginForm = () => {
     return `
-        <div class="loginForm">
+    <nav class="navigation">
+            <div class="navigation__item navigation__icon">
+                <img src="/images/pb.png" alt="Giffygram icon" id="logo">
+            </div>
+            <div class="navigation__item navigation__name">
+            Welcome to the World of GiffyGram
+            </div>
+        
+       </nav> 
+
+       <div class="loginForm">
+       <h2> Sign in to Find and Share your Giftastic Gifs Today</h2>
             <form>
                 <fieldset>
                     <label for="email">Email:</label>
