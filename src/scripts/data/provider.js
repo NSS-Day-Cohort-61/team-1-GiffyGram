@@ -10,6 +10,7 @@ const applicationState = {
     displayMessages: false,
     displayPostEntry: true,
   },
+  posts: []
 };
 
 export const fetchUsers = () => {
@@ -64,3 +65,19 @@ export const sendPostEntry = (postObj) => {
       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+export const sendUsers = (userServiceRequest) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userServiceRequest)
+  }
+
+
+  return fetch(`${apiURL}/users`, fetchOptions)
+      .then(response => response.json())
+      .then(() => {
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+      })
+}
