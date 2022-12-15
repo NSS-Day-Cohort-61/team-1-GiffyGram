@@ -1,8 +1,18 @@
 {
-  "users": [{
-    "id": 1,
-    "name": "Daniella Agnoletti",
-    "email": "daniella@agnoletti.com",
-    "password": "daniella"
-  }]
+  "users": [
+    {
+      "id": 1,
+      "name": "Daniella Agnoletti",
+      "email": "daniella@agnoletti.com",
+      "password": "daniella"
+    }
+  ],
+  "posts": [
+    {
+      "postTitle": "Life at NSS",
+      "postURL": "https://i.giphy.com/media/cklPOHnHepdwBLRnQp/200.webp",
+      "postDescription": "#blessed",
+      "id": 1
+    }
+  ]
 }
