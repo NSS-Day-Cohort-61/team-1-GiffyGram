@@ -8,6 +8,7 @@ const applicationState = {
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: true,
+    displaySinceYear: parseInt(Date().getFullYear())
   },
 };
 
@@ -50,6 +51,10 @@ export const setPostEntryStatus = (input) => {
 
 export const setCurrentUser = (inputUser) => {
   applicationState.currentUser = inputUser
+}
+
+export const setDisplaySinceYear = (inputYear) => {
+  applicationState.feed.displaySinceYear = inputYear
 }
 
 export const sendPostEntry = (postObj) => {
