@@ -1,3 +1,5 @@
+import { LoginForm } from "../auth/Login.js"
+
 export const Navigation = () => {
     return `
         <nav class="navigation">
@@ -17,3 +19,12 @@ export const Navigation = () => {
             </div>
        </nav> `
 }
+
+const applicationElement = document.querySelector(".giffygram")
+
+applicationElement.addEventListener("click", clickEvent => {
+        if(clickEvent.target.id === "logout") {
+            applicationElement.innerHTML = LoginForm()
+        }
+    }
+)
