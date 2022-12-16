@@ -55,9 +55,15 @@
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
       "userId": 1
+    },
+    {
+      "postTitle": "another one",
+      "postURL": "https://media.tenor.com/8MzXIqvpKNoAAAAC/stefanies-hank-dachshund.gif",
+      "postDescription": "i love him",
+      "userId": 3,
+      "date": "2022-12-16T15:26:45.283Z",
+      "id": 4
     }
   ],
-  "favorites": [
-
-  ]
+  "favorites": []
 }

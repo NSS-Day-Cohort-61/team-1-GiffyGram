@@ -1,5 +1,5 @@
 import { postEntryForm } from "./PostEntry.js";
-import { getUsers, getPosts, sendFavorites, getDisplaySinceYear } from "../data/provider.js";
+import { getUsers, getPosts, sendFavorites, getDisplaySinceYear, dateDisplayed } from "../data/provider.js";
 
 //gif title
 //gif
@@ -8,6 +8,8 @@ import { getUsers, getPosts, sendFavorites, getDisplaySinceYear } from "../data/
 //favorite star + trashcan
 const todaysDate = new Date().toDateString()
 export const postList = () =>{
+
+
     const newPost = getPosts()
     newPost.reverse();
     const displayYear = getDisplaySinceYear();
@@ -32,7 +34,7 @@ export const postList = () =>{
                         </div>
     
                         <div class="post__tagline">
-                            posted by ${foundUser.name} on ${post.date}
+                            posted by ${foundUser.name} on ${dateDisplayed(post)}
                         </div>
     
                         <div class="post__actions">

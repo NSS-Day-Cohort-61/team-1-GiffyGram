@@ -125,3 +125,13 @@ export const sendUsers = (userServiceRequest) => {
           mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
       })
 }
+
+
+export const dateDisplayed = (post) =>{
+  let event = post.date
+  const options = {year: 'numeric', month: 'short', day: 'numeric' };
+
+  event = new Date(event)
+  return event.toLocaleDateString('us-EG', options)
+
+}

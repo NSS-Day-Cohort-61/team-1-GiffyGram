@@ -40,7 +40,6 @@ document.addEventListener("click", (event) => {
     const postURL = document.querySelector("input[name='postURL']").value
     const postDescription = document.querySelector("textarea[name='postDescription']").value
     const currentUser = getCurrentUser();
-
     const postInformation = {
       postTitle: postTitle,
       postURL: postURL,
