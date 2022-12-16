@@ -23,5 +23,4 @@ export const Profile = () =>{
 
         </div>
         </section>`
-
 }

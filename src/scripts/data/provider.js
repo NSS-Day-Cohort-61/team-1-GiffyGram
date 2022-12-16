@@ -1,3 +1,4 @@
+
 const apiURL = "http://localhost:8088";
 const applicationElement = document.querySelector(".giffygram");
 
@@ -15,7 +16,9 @@ const applicationState = {
     displayPostEntry: true,
     displaySinceYear: parseInt(new Date().getFullYear())
   },
-  posts: [],
+  posts:[],
+  users:[],
+  messages:[],
   favorites: []
 };
 
@@ -24,6 +27,14 @@ export const fetchUsers = () => {
     .then((response) => response.json())
     .then((data) => {
       applicationState.users = data;
+    });
+};
+
+export const fetchMessages = () => {
+  return fetch(`${apiURL}/messages`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.messages = data;
     });
 };
 
@@ -38,6 +49,7 @@ export const fetchPosts = () => {
 export const getDisplaySinceYear = () => {
   return applicationState.feed.displaySinceYear;
 }
+
 export const fetchFavorites = () => {
   return fetch(`${apiURL}/favorites`)
     .then((response) => response.json())
@@ -56,6 +68,10 @@ export const getUsers = () => {
 
 export const getPosts = () => {
   return applicationState.posts.map((p) => ({ ...p }));
+};
+
+export const getMessages = () => {
+  return applicationState.messages.map((p) => ({ ...p }));
 };
 
 export const getFavorites = () => {
@@ -126,6 +142,22 @@ export const sendUsers = (userServiceRequest) => {
       })
 }
 
+export const sendMessages = (userServiceRequest) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userServiceRequest)
+  }
+
+
+  return fetch(`${apiURL}/messages`, fetchOptions)
+      .then(response => response.json())
+      .then(() => {
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+      })
+}
 
 export const dateDisplayed = (post) =>{
   let event = post.date

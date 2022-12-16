@@ -2,6 +2,7 @@ import { LoginForm } from "../auth/Login.js"
 import { postList } from "../feed/PostList.js"
 import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
+import { createDirectMessage } from "../message/MessageForm.js"
 
 
 export const Navigation = () => {
@@ -44,6 +45,13 @@ applicationElement.addEventListener("click", clickEvent => {
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "logo") {
         applicationElement.innerHTML = GiffyGram()
+    }
+}
+)
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "directMessageIcon") {
+        document.querySelector("#message__form__popup").innerHTML = createDirectMessage()
+        // document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 }
 )
