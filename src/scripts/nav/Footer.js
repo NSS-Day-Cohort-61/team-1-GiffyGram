@@ -13,7 +13,7 @@ export const Footer = () => {
                 <select id="timespanSelection">
                     <option value="">Forever</option>`
                     for(const timespan of timespans) {
-                        if(chosenTime === timespan.id) {
+                        if(parseInt(chosenTime) === timespan.id) {
                             html += `<option selected value="${timespan.id}">${timespan.name}</option>`;
                         } 
                         else {
