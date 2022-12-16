@@ -55,9 +55,41 @@
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
       "userId": 1
+    },
+    {
+      "postTitle": "Meme",
+      "postURL": "http://urlme.me/success/typed_a_url/made_a_meme.jpg",
+      "postDescription": "Test",
+      "userId": 1,
+      "date": "2022-12-16T20:35:16.136Z",
+      "id": 4
+    },
+    {
+      "postTitle": "test",
+      "postURL": "https://www.businessinsider.es/sites/navi.axelspringer.es/public/media/image/2021/05/zoe-roth-disaster-girl-meme-2345291.jpg",
+      "postDescription": "test",
+      "userId": 1,
+      "date": "2022-12-16T21:01:37.167Z",
+      "id": 5
     }
   ],
-  "favorites": [
-
+  "favorites": [],
+  "timespans": [
+    {
+      "id": 1,
+      "name": "This Hour"
+    },
+    {
+      "id": 2,
+      "name": "This Day"
+    },
+    {
+      "id": 3,
+      "name": "This Month"
+    },
+    {
+      "id": 4,
+      "name": "This Year"
+    }
   ]
 }

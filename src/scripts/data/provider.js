@@ -9,14 +9,17 @@ const applicationState = {
     password: "daniella"
   },
   feed: {
+    chosenTimespan: 0,
     chosenUser: null,
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: true,
-    displaySinceYear: parseInt(new Date().getFullYear())
+    displaySince: false
   },
+  users: [],
   posts: [],
-  favorites: []
+  favorites: [],
+  timespans: []
 };
 
 export const fetchUsers = () => {
@@ -35,14 +38,19 @@ export const fetchPosts = () => {
     });
 };
 
-export const getDisplaySinceYear = () => {
-  return applicationState.feed.displaySinceYear;
-}
 export const fetchFavorites = () => {
   return fetch(`${apiURL}/favorites`)
     .then((response) => response.json())
     .then((data) => {
       applicationState.favorites = data;
+    });
+};
+
+export const fetchTimespans = () => {
+  return fetch(`${apiURL}/timespans`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.timespans = data;
     });
 };
 
@@ -62,9 +70,21 @@ export const getFavorites = () => {
   return applicationState.favorites.map((f) => ({ ...f }));
 };
 
+export const getTimespans = () => {
+  return applicationState.timespans.map((t) => ({ ...t }));
+};
+
 export const getCurrentUser = () => {
   return { ...applicationState.currentUser };
 };
+
+export const getChosenTimespan = () => {
+  return applicationState.feed.chosenTimespan;
+}
+
+export const getChosenUser = () => {
+  return { ...applicationState.feed.chosenUser };
+}
 
 export const setPostEntryStatus = (input) => {
   applicationState.feed.displayPostEntry = input;
@@ -75,8 +95,12 @@ export const setCurrentUser = (inputUser) => {
   applicationState.currentUser = inputUser
 }
 
-export const setDisplaySinceYear = (inputYear) => {
-  applicationState.feed.displaySinceYear = inputYear
+export const setChosenUser = (inputUser) => {
+  applicationState.feed.chosenUser = inputUser
+}
+
+export const setChosenTimespan = (inputTimespan) => {
+  applicationState.feed.chosenTimespan = inputTimespan
 }
 
 export const sendPostEntry = (postObj) => {

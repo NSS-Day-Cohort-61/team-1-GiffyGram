@@ -1,5 +1,5 @@
 import { postEntryForm } from "./PostEntry.js";
-import { getUsers, getPosts, sendFavorites, getDisplaySinceYear } from "../data/provider.js";
+import { getUsers, getPosts, getChosenTimespan, sendFavorites } from "../data/provider.js";
 
 //gif title
 //gif
@@ -10,10 +10,68 @@ const todaysDate = new Date().toDateString()
 export const postList = () =>{
     const newPost = getPosts()
     newPost.reverse();
-    const displayYear = getDisplaySinceYear();
-    const filteredPosts = newPost.filter(post => post.date.substr(0, 4) <= displayYear)
+    let chosenTimespan = parseInt(getChosenTimespan());
+    
+    const filterByTimespan = (currentTimespan) => {
+      let currentHour = new Date().getHours() + 6;
+      if(currentHour < 10) {
+        currentHour = '0' + currentHour.toString();
+      }
+      else {
+        currentHour = currentHour.toString();
+      }
+      let filtered = newPost
+      if(currentTimespan === 0)
+        {
+          filtered = newPost;
+        }
+        // By Hour
+      else if(currentTimespan === 1)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString() 
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+            && dateStr.substr(0, 3) === new Date().toLocaleString("en-US", {weekday: "short"})
+            && dateStr.substr(17, 2) === currentHour
+          
+          })
+        }
+        // By Day
+      else if (currentTimespan === 2)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString() 
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+            && dateStr.substr(0, 3) === new Date().toLocaleString("en-US", {weekday: "short"})
+
+          })
+        }
+        // By Month
+        else if (currentTimespan === 3)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString()
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+          })
+        }
+        // By Year
+        else if (currentTimespan === 4)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString()
+          })
+        }
+        return filtered;
+      }
+
+    let filteredByTimespan = filterByTimespan(chosenTimespan)
+    
     let html = `${postEntryForm()}`
-    filteredPosts.map(post =>{
+    filteredByTimespan.map(post =>{
         const users = getUsers()
         let foundUser = users.find(user =>{
                 if(post.userId===user.id){
@@ -65,3 +123,8 @@ document.addEventListener("click", (event) => {
     sendFavorites(favoriteInfo);
   }
 });
+
+const timespanStr = (postDate) => {
+  let event = new Date(postDate)
+  return event.toUTCString();
+}
