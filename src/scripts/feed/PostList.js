@@ -1,5 +1,5 @@
 import { postEntryForm } from "./PostEntry.js";
-import { getUsers, getPosts, sendFavorites } from "../data/provider.js";
+import { getUsers, getPosts, sendFavorites, getDisplaySinceYear } from "../data/provider.js";
 
 //gif title
 //gif
@@ -11,7 +11,7 @@ export const postList = () =>{
     const newPost = getPosts()
     newPost.reverse();
     const displayYear = getDisplaySinceYear();
-    filteredPosts = newPost.filter(post => post.date <= displayYear)
+    const filteredPosts = newPost.filter(post => post.date.substr(0, 4) <= displayYear)
     let html = `${postEntryForm()}`
     filteredPosts.map(post =>{
         const users = getUsers()

@@ -14,7 +14,7 @@ const applicationState = {
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: true,
-    // displaySinceYear: parseInt(Date().getFullYear())
+    displaySinceYear: parseInt(new Date().getFullYear())
   },
   posts:[],
   users:[],

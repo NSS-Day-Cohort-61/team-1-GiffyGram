@@ -32,7 +32,8 @@ applicationElement.addEventListener("click", clickEvent => {
 )
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "directMessageIcon") {
-        applicationElement.innerHTML = createDirectMessage()
+        document.querySelector("#message__form__popup").innerHTML = createDirectMessage()
+        // document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 }
 )

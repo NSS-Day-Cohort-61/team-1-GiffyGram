@@ -55,6 +55,14 @@
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
       "userId": 1
+    },
+    {
+      "postTitle": "Everyday Struggles",
+      "postURL": "https://media.tenor.com/PlXROjIs2BcAAAAd/javascript-undefined-is-not-a-function.gif",
+      "postDescription": "#happycoding",
+      "userId": 1,
+      "date": "2022-12-16T15:33:39.578Z",
+      "id": 4
     }
   ],
   "messages": [
@@ -64,7 +72,5 @@
       "date": "12-15-2022"
     }
   ],
-  "favorites": [
-
-  ]
+  "favorites": []
 }
