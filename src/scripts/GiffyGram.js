@@ -7,6 +7,7 @@ export const GiffyGram = () => {
     // Show main main UI
     return `${Navigation()}
             <div id="message__form__popup"></div>
+            
             <div class="giffygram__feed">
             ${postList()}
             </div>

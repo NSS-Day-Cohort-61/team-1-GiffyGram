@@ -57,20 +57,16 @@
       "userId": 1
     },
     {
-      "postTitle": "Everyday Struggles",
-      "postURL": "https://media.tenor.com/PlXROjIs2BcAAAAd/javascript-undefined-is-not-a-function.gif",
-      "postDescription": "#happycoding",
-      "userId": 1,
-      "date": "2022-12-16T15:33:39.578Z",
+      "postTitle": "another one",
+      "postURL": "https://media.tenor.com/8MzXIqvpKNoAAAAC/stefanies-hank-dachshund.gif",
+      "postDescription": "i love him",
+      "userId": 3,
+      "date": "2022-12-16T15:26:45.283Z",
       "id": 4
     }
   ],
+  "favorites": [],
   "messages": [
-    {
-      "userId": 1,
-      "message": "example 1",
-      "date": "12-15-2022"
-    }
-  ],
-  "favorites": []
+   
+  ]
 }

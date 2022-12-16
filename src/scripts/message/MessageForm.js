@@ -1,8 +1,6 @@
-import { RegisterForm } from "../auth/Register.js";
-import { getMessages, getUsers } from "../data/provider.js";
-import { GiffyGram } from "../GiffyGram.js";
+import { getCurrentUser, getUsers, sendMessages } from "../data/provider.js";
 
-const messages = getMessages()
+
 
 
 
@@ -26,14 +24,14 @@ export const createDirectMessage = () => {
         <h3> Direct Message</h3>
             <div>
             Recipient:
-                <select name="directMessage__userSelect" class="message__input">
+                <select name="directMessage__userSelect" class="message__input" id="recipientId">
                     <option>Choose a recipient.. </option>
                     ${userMap()}
                 </select>
             </div>
             <div>
                 <label for="message">Message:</label>
-                <input type="text" name="message" class="message__input placeholder="Message to user" />
+                <input type="text" name="message" class="message__input" placeholder="Message to user" />
            </div>
         
         <button id="directMessage__submit">Save</button>
@@ -59,7 +57,25 @@ applicationElement.addEventListener("click", clickEvent => {
 
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "directMessage__submit") {
+        const sender = getCurrentUser()
+
+        const text = document.querySelector("input[name='message']").value
+        const recipient = document.querySelector("select[id='recipientId']").value
         
+        
+    
+        let messageDetails = {
+            userId: parseInt(sender.id),
+            reipientId: parseInt(recipient),
+            messageText: text
+        };
+    
+        
+        sendMessages(messageDetails);
+
+
+
+
         document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 }
