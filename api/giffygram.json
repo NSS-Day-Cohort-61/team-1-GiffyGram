@@ -1,11 +1,6 @@
 {
   "users": [
-    {
-      "id": 1,
-      "name": "Daniella Agnoletti",
-      "email": "daniella@agnoletti.com",
-      "password": "daniella"
-    },
+    {},
     {
       "name": "marek",
       "email": "marek@s.com",
@@ -54,7 +49,7 @@
       "postDescription": "#feelsgood",
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
-      "userId": 1
+      "userId": 4
     },
     {
       "postTitle": "another one",
@@ -65,8 +60,12 @@
       "id": 4
     }
   ],
-  "favorites": [],
-  "messages": [
-   
-  ]
+  "favorites": [
+    {
+      "postId": 3,
+      "userId": 1,
+      "id": 1
+    }
+  ],
+  "messages": []
 }
