@@ -7,6 +7,8 @@ import { getDisplaySinceYear, setDisplaySinceYear } from "../data/provider.js"
 
 export const Footer = () => {
     const displayYear = getDisplaySinceYear()
+    let checkedStatus = getDisplayFavorites() ? "checked" : ""
+
     let html = `
         <footer class="footer">
             <div class="footer__item">
@@ -78,7 +80,7 @@ export const Footer = () => {
             </div>
             <div class="footer__item">
                 Show only favorites
-                <input type="checkbox" id="showOnlyFavorites">
+                <input type="checkbox" id="showOnlyFavorites" ${checkedStatus}>
             </div>
        </footer> `
        return html

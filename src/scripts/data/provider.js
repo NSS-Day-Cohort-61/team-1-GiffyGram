@@ -115,7 +115,9 @@ export const sendFavorites = (favObj) => {
 
   return fetch(`${apiURL}/favorites`, fetchOptions)
     .then((response) => response.json())
-    .then(() => {});
+    .then(() => {
+      applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    });
 };
 
 export const sendUsers = (userServiceRequest) => {
@@ -130,6 +132,13 @@ export const sendUsers = (userServiceRequest) => {
   return fetch(`${apiURL}/users`, fetchOptions)
     .then((response) => response.json())
     .then(() => {
-      mainContainer.dispatchEvent(new CustomEvent("stateChanged"));
+      applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
     });
 };
+
+export const deleteFavorite = (favoriteId) => {
+  return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+  })
+}

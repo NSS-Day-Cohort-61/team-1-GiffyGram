@@ -54,19 +54,14 @@
       "postDescription": "#feelsgood",
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
-      "userId": 1
+      "userId": 4
     }
   ],
   "favorites": [
     {
-      "postId": 1,
-      "userId": 1,
-      "id": 1
-    },
-    {
       "postId": 3,
       "userId": 1,
-      "id": 2
+      "id": 1
     }
   ]
 }
