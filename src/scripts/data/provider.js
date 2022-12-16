@@ -210,7 +210,7 @@ export const fetchProfiles = () => {
   return fetch(`${apiURL}/profiles`)
     .then((response) => response.json())
     .then((data) => {
-      applicationState.users = data;
+      applicationState.profiles = data;
     });
 };
 

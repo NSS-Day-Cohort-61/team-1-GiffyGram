@@ -1,19 +1,17 @@
 import { getCurrentUser, getProfiles, updateProfile } from "../data/provider.js"
 import { Navigation } from "../nav/Navigation.js"
 
-let profiles = getProfiles()
-const foundProfile = () =>{
-    profiles.find(profile =>{
-        if(profile.userId===user.id){
-            return profile
-        }
-    })
-}
+// let profiles = getProfiles()
+// profiles.find(profile =>{
+//     if(profile.userId===user.id){
+
+//     }
+// })
 
 
 export const Profile = () =>{
     let user = getCurrentUser()
-    let currentProfile = foundProfile()
+
     return`
     ${Navigation()}
     <section class="profilePage">
@@ -28,7 +26,7 @@ export const Profile = () =>{
     </div>
 
     <div class="profileBio">
-    ${currentProfile.bio}
+    bio
     </div>
 
     <div class="editProfile">
@@ -36,6 +34,7 @@ export const Profile = () =>{
     </div>
 
     </section>`
+
 }
 
 
