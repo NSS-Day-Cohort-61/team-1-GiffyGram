@@ -19,7 +19,8 @@ const applicationState = {
   posts:[],
   users:[],
   messages:[],
-  favorites: []
+  favorites: [],
+  profiles: []
 };
 
 export const fetchUsers = () => {
@@ -166,4 +167,33 @@ export const dateDisplayed = (post) =>{
   event = new Date(event)
   return event.toLocaleDateString('us-EG', options)
 
+}
+
+export const fetchProfiles = () => {
+  return fetch(`${apiURL}/profiles`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.users = data;
+    });
+};
+
+export const getProfiles = () => {
+  return applicationState.profiles.map((p) => ({ ...p }));
+};
+
+export const updateProfile = (userServiceRequest) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userServiceRequest)
+  }
+
+
+  return fetch(`${apiURL}/profiles`, fetchOptions)
+      .then(response => response.json())
+      .then(() => {
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+      })
 }
