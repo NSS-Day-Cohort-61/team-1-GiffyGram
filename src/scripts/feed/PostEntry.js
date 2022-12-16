@@ -15,7 +15,7 @@ export const postEntryForm = () => {
       <input value name="postURL" class="newPost__input" type="text" placeholder="URL of gif">
     </div>
     <textarea name="postDescription" class="newPost_input newPost__description" placeholder="Story behind your gif..."></textarea>
-    <button id="newPost__submit">Save</button>
+    <button id="newPost__submit">Post</button>
     <button id="newPost__cancel">Cancel</button>
     </div>
     `

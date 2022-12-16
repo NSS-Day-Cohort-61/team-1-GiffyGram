@@ -1,12 +1,6 @@
 {
   "users": [
     {
-      "id": 1,
-      "name": "Daniella Agnoletti",
-      "email": "daniella@agnoletti.com",
-      "password": "daniella"
-    },
-    {
       "name": "marek",
       "email": "marek@s.com",
       "password": "marek",
@@ -22,13 +16,13 @@
       "name": "chris",
       "email": "chris@h.com",
       "password": "chris",
-      "id": 4
+      "id": 1
     },
     {
       "name": "matthew",
       "email": "matthew@m.com",
       "password": "matthew",
-      "id": 5
+      "id": 4
     }
   ],
   "posts": [
@@ -36,7 +30,7 @@
       "postTitle": "Life at NSS",
       "postURL": "https://i.giphy.com/media/cklPOHnHepdwBLRnQp/200.webp",
       "postDescription": "#blessed",
-      "userId": 4,
+      "userId": 1,
       "date": "2022-12-15T19:38:32.404Z",
       "id": 1
     },
@@ -63,16 +57,40 @@
       "userId": 3,
       "date": "2022-12-16T15:26:45.283Z",
       "id": 4
+    },
+    {
+      "postTitle": "group project",
+      "postURL": "https://i.giphy.com/media/93uYptVAHE7C0/giphy.webp",
+      "postDescription": "#tooeasy",
+      "userId": 1,
+      "date": "2022-12-16T20:09:36.989Z",
+      "id": 5
     }
   ],
   "favorites": [],
   "messages": [],
+  "timespans": [
+    {
+      "id": 1,
+      "name": "This Hour"
+    },
+    {
+      "id": 2,
+      "name": "This Day"
+    },
+    {
+      "id": 3,
+      "name": "This Month"
+    },
+    {
+      "id": 4,
+      "name": "This Year"
+    }
+  ],
   "profiles": [
     {
       "picture": "https://i.gifer.com/embedded/download/WmG.gif",
       "bio": "hello friends! <3",
       "userId": 3,
       "id": 1
-    }
-  ]
-}
+    } ]

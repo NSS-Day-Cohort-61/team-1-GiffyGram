@@ -7,19 +7,20 @@ const applicationState = {
     id: 1,
     name: "Daniella Agnoletti",
     email: "daniella@agnoletti.com",
-    password: "daniella"
+    password: "daniella",
   },
   feed: {
+    chosenTimespan: 0,
     chosenUser: null,
     displayFavorites: false,
     displayMessages: false,
-    displayPostEntry: true,
-    displaySinceYear: parseInt(new Date().getFullYear())
+    displayPostEntry: false,
   },
-  posts:[],
-  users:[],
-  messages:[],
+  users: [],
+  posts: [],
   favorites: [],
+  messages: [],
+  timespans: [],
   profiles: []
 };
 
@@ -47,15 +48,19 @@ export const fetchPosts = () => {
     });
 };
 
-export const getDisplaySinceYear = () => {
-  return applicationState.feed.displaySinceYear;
-}
-
 export const fetchFavorites = () => {
   return fetch(`${apiURL}/favorites`)
     .then((response) => response.json())
     .then((data) => {
       applicationState.favorites = data;
+    });
+};
+
+export const fetchTimespans = () => {
+  return fetch(`${apiURL}/timespans`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.timespans = data;
     });
 };
 
@@ -79,8 +84,23 @@ export const getFavorites = () => {
   return applicationState.favorites.map((f) => ({ ...f }));
 };
 
+export const getTimespans = () => {
+  return applicationState.timespans.map((t) => ({ ...t }));
+};
+
 export const getCurrentUser = () => {
   return { ...applicationState.currentUser };
+};
+
+export const getChosenTimespan = () => {
+  return applicationState.feed.chosenTimespan;
+}
+
+export const getChosenUser = () => {
+  return { ...applicationState.feed.chosenUser };
+}
+export const getDisplayFavorites = () => {
+  return applicationState.feed.displayFavorites;
 };
 
 export const setPostEntryStatus = (input) => {
@@ -92,9 +112,18 @@ export const setCurrentUser = (inputUser) => {
   applicationState.currentUser = inputUser
 }
 
-export const setDisplaySinceYear = (inputYear) => {
-  applicationState.feed.displaySinceYear = inputYear
+export const setChosenUser = (inputUser) => {
+  applicationState.feed.chosenUser = inputUser
 }
+
+export const setChosenTimespan = (inputTimespan) => {
+  applicationState.feed.chosenTimespan = inputTimespan
+}
+
+export const setDisplayFavorites = (input) => {
+  applicationState.feed.displayFavorites = input;
+  applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+};
 
 export const sendPostEntry = (postObj) => {
   const fetchOptions = {
@@ -123,24 +152,32 @@ export const sendFavorites = (favObj) => {
 
   return fetch(`${apiURL}/favorites`, fetchOptions)
     .then((response) => response.json())
-    .then(() => {});
+    .then(() => {
+      applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    });
 };
 
 export const sendUsers = (userServiceRequest) => {
   const fetchOptions = {
-      method: "POST",
-      headers: {
-          "Content-Type": "application/json"
-      },
-      body: JSON.stringify(userServiceRequest)
-  }
-
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(userServiceRequest),
+  };
 
   return fetch(`${apiURL}/users`, fetchOptions)
-      .then(response => response.json())
-      .then(() => {
-          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
-      })
+    .then((response) => response.json())
+    .then(() => {
+      applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+    });
+};
+
+export const deleteFavorite = (favoriteId) => {
+  return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+  })
 }
 
 export const sendMessages = (userServiceRequest) => {
