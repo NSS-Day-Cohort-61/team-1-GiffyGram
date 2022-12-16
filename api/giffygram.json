@@ -68,5 +68,23 @@
     }
   ],
   "favorites": [],
-  "messages": []
+  "messages": [],
+  "timespans": [
+    {
+      "id": 1,
+      "name": "This Hour"
+    },
+    {
+      "id": 2,
+      "name": "This Day"
+    },
+    {
+      "id": 3,
+      "name": "This Month"
+    },
+    {
+      "id": 4,
+      "name": "This Year"
+    }
+  ]
 }
