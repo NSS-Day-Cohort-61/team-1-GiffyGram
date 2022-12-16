@@ -1,4 +1,5 @@
 import { LoginForm } from "../auth/Login.js"
+import { createDirectMessage } from "../message/MessageForm.js"
 
 
 export const Navigation = () => {
@@ -28,4 +29,11 @@ applicationElement.addEventListener("click", clickEvent => {
             applicationElement.innerHTML = LoginForm()
         }
     }
+)
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "directMessageIcon") {
+        document.querySelector("#message__form__popup").innerHTML = createDirectMessage()
+        // document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+    }
+}
 )
