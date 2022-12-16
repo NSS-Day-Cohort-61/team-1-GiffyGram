@@ -1,4 +1,7 @@
 import { LoginForm } from "../auth/Login.js"
+import { postList } from "../feed/PostList.js"
+import { Profile } from "../friends/Profile.js"
+import { GiffyGram } from "../GiffyGram.js"
 
 
 export const Navigation = () => {
@@ -15,6 +18,9 @@ export const Navigation = () => {
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
                 <div class="notification__count"> 0 </div>
             </div>
+            <div class="navigation__item navigation__profile">
+            <button id="profile">Profile</button>
+            </div>
             <div class="navigation__item navigation__logout">
                 <button id="logout">Logout</button>
             </div>
@@ -28,4 +34,16 @@ applicationElement.addEventListener("click", clickEvent => {
             applicationElement.innerHTML = LoginForm()
         }
     }
+)
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "profile") {
+        applicationElement.innerHTML = Profile()
+    }
+}
+)
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "logo") {
+        applicationElement.innerHTML = GiffyGram()
+    }
+}
 )
