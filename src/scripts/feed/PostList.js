@@ -1,43 +1,96 @@
 import { postEntryForm } from "./PostEntry.js";
-import {
-  getUsers,
-  getPosts,
-  sendFavorites,
-  getDisplayFavorites,
-  getFavorites,
-  getDisplaySinceYear,
-  getCurrentUser,
-  dateDisplayed,
-  deleteFavorite,
-} from "../data/provider.js";
+import { getUsers, getPosts, getChosenTimespan, getCurrentUser, getDisplayFavorites, getFavorites, sendFavorites, deleteFavorite, dateDisplayed } from "../data/provider.js";
 
-// const todaysDate = new Date().toDateString();
-export const postList = () => {
-  const posts = getPosts();
-  posts.reverse();
-  const displayYear = getDisplaySinceYear();
-  let filteredPosts = posts.filter(
-    (post) => post.date.substr(0, 4) <= displayYear
-  );
-  if (getDisplayFavorites()) {
-    filteredPosts = favoritesFilter(filteredPosts);
-  }
-  let html = `${postEntryForm()}`;
-  filteredPosts.map((post) => {
-    const favorites = getFavorites();
-    const currentUser = getCurrentUser();
-    const foundFavorite = favorites.find((favorite) => {
-      return favorite.postId === post.id && favorite.userId === currentUser.id;
-    });
-    const isFavorited = foundFavorite ? true : false;
-    const starColor = isFavorited ? "yellow" : "blank";
-    const users = getUsers();
-    let foundUser = users.find((user) => {
-      if (post.userId === user.id) {
-        return user;
+//gif title
+//gif
+//description
+//posted by NAME on DATE
+//favorite star + trashcan
+const todaysDate = new Date().toDateString()
+export const postList = () =>{
+    const newPost = getPosts()
+    newPost.reverse();
+    
+    // Filtering by Timespan
+    let chosenTimespan = parseInt(getChosenTimespan());
+    const filterByTimespan = (currentTimespan) => {
+      let currentHour = new Date().getHours() + 6;
+      if(currentHour < 10) {
+        currentHour = '0' + currentHour.toString();
       }
-    });
-    html += `
+      else {
+        currentHour = currentHour.toString();
+      }
+      let filtered = newPost
+      if(currentTimespan === 0)
+        {
+          filtered = newPost;
+        }
+        // By Hour
+      else if(currentTimespan === 1)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString() 
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+            && dateStr.substr(0, 3) === new Date().toLocaleString("en-US", {weekday: "short"})
+            && dateStr.substr(17, 2) === currentHour
+          
+          })
+        }
+        // By Day
+      else if (currentTimespan === 2)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString() 
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+            && dateStr.substr(0, 3) === new Date().toLocaleString("en-US", {weekday: "short"})
+
+          })
+        }
+        // By Month
+        else if (currentTimespan === 3)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString()
+            && dateStr.substr(8, 3) === new Date().toLocaleString('en-US', {month: 'short'})
+          })
+        }
+        // By Year
+        else if (currentTimespan === 4)
+        {
+          filtered = newPost.filter(post => {
+            let dateStr = timespanStr(post.date)
+            return dateStr.substr(12, 4) === new Date().getFullYear().toString()
+          })
+        }
+        return filtered;
+      }
+    let filteredPosts = filterByTimespan(chosenTimespan)
+
+    if (getDisplayFavorites()) {
+      filteredPosts = favoritesFilter(filteredPosts);
+    }
+    
+    let html = `${postEntryForm()}`;
+    
+    filteredPosts.map((post) => {
+      const favorites = getFavorites();
+      const currentUser = getCurrentUser();
+      const foundFavorite = favorites.find((favorite) => {
+        return favorite.postId === post.id && favorite.userId === currentUser.id;
+      });
+      const isFavorited = foundFavorite ? true : false;
+      const starColor = isFavorited ? "yellow" : "blank";
+      const users = getUsers();
+      let foundUser = users.find((user) => {
+        if (post.userId === user.id) {
+          return user;
+        }
+      });
+      html += `
                 <section class="post" id="${post.id}">
                     <h2 class="post__title">${post.postTitle}</h2>
                         <div>
@@ -81,6 +134,10 @@ document.addEventListener("click", (event) => {
   }
 });
 
+const timespanStr = (postDate) => {
+  let event = new Date(postDate)
+  return event.toUTCString();
+}
 function findFavoriteObj(postId, userId) {
   const favorites = getFavorites();
   const foundFavorite = favorites.find((favorite) => {
