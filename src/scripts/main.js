@@ -1,6 +1,6 @@
 import { GiffyGram } from "./GiffyGram.js"
 import { LoginForm } from "./auth/Login.js"
-import { fetchPosts, fetchUsers, fetchFavorites, fetchTimespans } from "./data/provider.js"
+import { fetchPosts, fetchUsers, fetchFavorites, fetchMessages, fetchTimespans } from "./data/provider.js"
 
 const applicationElement = document.querySelector(".giffygram")
 
@@ -10,6 +10,7 @@ export const renderApp = () =>  {
     .then(() => fetchPosts())
     .then(() => fetchFavorites())
     .then(() => fetchTimespans())
+    .then(() => fetchMessages())
         .then(() => {
             if (user) {
                 applicationElement.innerHTML = GiffyGram()

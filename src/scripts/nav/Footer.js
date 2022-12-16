@@ -1,6 +1,7 @@
-import { getChosenTimespan, getUsers, getTimespans, getChosenUser, setChosenTimespan, setChosenUser } from "../data/provider.js"
+import { getChosenTimespan, getDisplayFavorites, getUsers, getTimespans, getChosenUser, setDisplayFavorites, setChosenTimespan, setChosenUser } from "../data/provider.js"
 
 export const Footer = () => {
+    let checkedStatus = getDisplayFavorites() ? "checked" : ""
     const chosenTime = getChosenTimespan()
     const chosenUser = getChosenUser()
     const users = getUsers()
@@ -37,7 +38,7 @@ export const Footer = () => {
             </div>
             <div class="footer__item">
                 Show only favorites
-                <input type="checkbox" id="showOnlyFavorites">
+                <input type="checkbox" id="showOnlyFavorites" ${checkedStatus}>
             </div>
             <div class="footer__item">
                 Total Posts
@@ -46,6 +47,16 @@ export const Footer = () => {
        </footer> `
        return html;
 }
+
+document.addEventListener("click", (event) => {
+    if (event.target.id === "showOnlyFavorites") {
+      if (getDisplayFavorites()) {
+        setDisplayFavorites(false);
+      } else {
+        setDisplayFavorites(true);
+      }
+    }
+  });
 
 const applicationElement = document.querySelector(".giffygram")
 
