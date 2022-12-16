@@ -86,5 +86,13 @@
       "id": 4,
       "name": "This Year"
     }
+  ],
+  "profiles": [
+    {
+      "picture": "https://i.gifer.com/embedded/download/WmG.gif",
+      "bio": "hello friends! <3",
+      "userId": 3,
+      "id": 1
+    }
   ]
 }
