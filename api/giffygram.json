@@ -1,6 +1,5 @@
 {
   "users": [
-    {},
     {
       "name": "marek",
       "email": "marek@s.com",
@@ -17,13 +16,13 @@
       "name": "chris",
       "email": "chris@h.com",
       "password": "chris",
-      "id": 4
+      "id": 1
     },
     {
       "name": "matthew",
       "email": "matthew@m.com",
       "password": "matthew",
-      "id": 5
+      "id": 4
     }
   ],
   "posts": [
@@ -31,7 +30,7 @@
       "postTitle": "Life at NSS",
       "postURL": "https://i.giphy.com/media/cklPOHnHepdwBLRnQp/200.webp",
       "postDescription": "#blessed",
-      "userId": 4,
+      "userId": 1,
       "date": "2022-12-15T19:38:32.404Z",
       "id": 1
     },
@@ -49,7 +48,7 @@
       "postDescription": "#feelsgood",
       "date": "2022-12-15T20:38:06.439Z",
       "id": 3,
-      "userId": 4
+      "userId": 1
     },
     {
       "postTitle": "another one",
@@ -58,14 +57,16 @@
       "userId": 3,
       "date": "2022-12-16T15:26:45.283Z",
       "id": 4
-    }
-  ],
-  "favorites": [
+    },
     {
-      "postId": 3,
+      "postTitle": "group project",
+      "postURL": "https://i.giphy.com/media/93uYptVAHE7C0/giphy.webp",
+      "postDescription": "#tooeasy",
       "userId": 1,
-      "id": 1
+      "date": "2022-12-16T20:09:36.989Z",
+      "id": 5
     }
   ],
+  "favorites": [],
   "messages": []
 }
