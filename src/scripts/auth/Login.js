@@ -61,3 +61,4 @@ document.addEventListener("click", clickEvent => {
         document.querySelector(".giffygram").innerHTML = RegisterForm()
     }
 })
+
