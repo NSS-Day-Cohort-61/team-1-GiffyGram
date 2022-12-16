@@ -1,32 +1,42 @@
 import { getCurrentUser, getProfiles, updateProfile } from "../data/provider.js"
 import { Navigation } from "../nav/Navigation.js"
 
+let profiles = getProfiles()
+const foundProfile = () =>{
+    profiles.find(profile =>{
+        if(profile.userId===user.id){
+            return profile
+        }
+    })
+}
+
+
 export const Profile = () =>{
     let user = getCurrentUser()
-        return`
-    
-        ${Navigation()}
-        <section class="profilePage">
+    let currentProfile = foundProfile()
+    return`
+    ${Navigation()}
+    <section class="profilePage">
 
-        <div class="profileName">
-        <h1>${user.name}</h1>
-        </div>
+    <div class="profileName">
+    <h1>${user.name}</h1>
+    </div>
 
-        <div class="profileContent">
-        <div>
-        <img class="profilePicture" src="https://i.gifer.com/embedded/download/WmG.gif">
-        </div>
+    <div class="profileContent">
+    <div>
+    <img class="profilePicture" src="https://i.gifer.com/embedded/download/WmG.gif">
+    </div>
 
-        <div class="profileBio">
-        bio
-        </div>
+    <div class="profileBio">
+    ${currentProfile.bio}
+    </div>
 
-        <div class="editProfile">
-        <button id="edit">Edit Profile</button>
-        </div>
+    <div class="editProfile">
+    <button id="edit">Edit Profile</button>
+    </div>
 
-        </section>`
-        }
+    </section>`
+}
 
 
 const profileForm = () =>{
@@ -76,5 +86,6 @@ document.addEventListener("click", (event) => {
         userId: currentUser.id
       }
       updateProfile(profileInformation)
+      applicationElement.innerHTML = Profile()
     }
   })
