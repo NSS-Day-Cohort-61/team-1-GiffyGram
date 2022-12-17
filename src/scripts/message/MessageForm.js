@@ -34,7 +34,7 @@ export const createDirectMessage = () => {
                 <input type="text" name="message" class="message__input" placeholder="Message to user" />
            </div>
         
-        <button id="directMessage__submit">Save</button>
+        <button id="directMessage__submit">Send</button>
         <button id="directMessage__cancel">Cancel</button>
         <button id="directMessage__close">x</button>
 

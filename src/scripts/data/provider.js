@@ -94,6 +94,7 @@ export const getChosenTimespan = () => {
 export const getChosenUser = () => {
   return { ...applicationState.feed.chosenUser };
 }
+
 export const getDisplayFavorites = () => {
   return applicationState.feed.displayFavorites;
 };
@@ -170,6 +171,13 @@ export const sendUsers = (userServiceRequest) => {
 
 export const deleteFavorite = (favoriteId) => {
   return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+  })
+}
+
+export const deleteMessage = (messageId) => {
+  return fetch(`${apiURL}/messages/${messageId}`, { method: "DELETE" })
   .then(() => {
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
   })

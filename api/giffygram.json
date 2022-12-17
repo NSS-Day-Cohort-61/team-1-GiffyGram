@@ -97,7 +97,20 @@
       "id": 4
     }
   ],
-  "messages": [],
+  "messages": [
+    {
+      "userId": 2,
+      "C": 1,
+      "messageText": "hello chris",
+      "id": 1
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "hello marek",
+      "id": 2
+    }
+  ],
   "timespans": [
     {
       "id": 1,

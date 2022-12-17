@@ -1,7 +1,7 @@
 import { Footer } from "./nav/Footer.js"
 import { Navigation } from "./nav/Navigation.js"
 import { postList } from "./feed/PostList.js"
-import { createDirectMessage } from "./message/MessageForm.js"
+
 export const GiffyGram = () => {
 
     // Show main main UI
@@ -13,3 +13,4 @@ export const GiffyGram = () => {
             </div>
             ${Footer()}`
 }
+
