@@ -5,9 +5,9 @@ const applicationElement = document.querySelector(".giffygram");
 const applicationState = {
   currentUser: {
     id: 1,
-    name: "Daniella Agnoletti",
-    email: "daniella@agnoletti.com",
-    password: "daniella",
+    name: "Scary Monster",
+    email: "scary@monster.com",
+    password: "scary",
   },
   feed: {
     chosenUser: null,
