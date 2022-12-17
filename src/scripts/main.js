@@ -11,6 +11,7 @@ export const renderApp = () =>  {
     .then(() => fetchFavorites())
     .then(() => fetchTimespans())
     .then(() => fetchMessages())
+    
         .then(() => {
             if (user) {
                 applicationElement.innerHTML = GiffyGram()

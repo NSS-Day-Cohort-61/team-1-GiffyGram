@@ -65,6 +65,14 @@
       "userId": 1,
       "date": "2022-12-16T20:09:36.989Z",
       "id": 5
+    },
+    {
+      "postTitle": "",
+      "postURL": "",
+      "postDescription": "",
+      "userId": 2,
+      "date": "2022-12-16T22:48:05.032Z",
+      "id": 6
     }
   ],
   "favorites": [],
