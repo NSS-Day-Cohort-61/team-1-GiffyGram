@@ -1,6 +1,12 @@
 {
   "users": [
     {
+      "name": "chris",
+      "email": "chris@h.com",
+      "password": "chris",
+      "id": 1
+    },
+    {
       "name": "marek",
       "email": "marek@s.com",
       "password": "marek",
@@ -11,12 +17,6 @@
       "email": "kc@w.com",
       "password": "kaci",
       "id": 3
-    },
-    {
-      "name": "chris",
-      "email": "chris@h.com",
-      "password": "chris",
-      "id": 1
     },
     {
       "name": "matthew",
@@ -65,9 +65,38 @@
       "userId": 1,
       "date": "2022-12-16T20:09:36.989Z",
       "id": 5
+    },
+    {
+      "postTitle": "it's friday",
+      "postURL": "https://i.giphy.com/media/l0Exm64tdMJFHBFIc/giphy.webp",
+      "postDescription": "#yes",
+      "userId": 1,
+      "date": "2022-12-16T21:34:41.290Z",
+      "id": 6
     }
   ],
-  "favorites": [],
+  "favorites": [
+    {
+      "postId": 6,
+      "userId": 1,
+      "id": 1
+    },
+    {
+      "postId": 5,
+      "userId": 1,
+      "id": 2
+    },
+    {
+      "postId": 6,
+      "userId": 3,
+      "id": 3
+    },
+    {
+      "postId": 5,
+      "userId": 3,
+      "id": 4
+    }
+  ],
   "messages": [],
   "timespans": [
     {
@@ -93,6 +122,12 @@
       "bio": "hello friends! <3",
       "userId": 3,
       "id": 1
+    },
+    {
+      "picture": "https://i.giphy.com/media/3o7TKtDXJ48AogQxBC/giphy.webp",
+      "bio": "here to have fun",
+      "userId": 1,
+      "id": 2
     }
   ]
 }

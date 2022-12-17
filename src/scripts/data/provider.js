@@ -1,14 +1,9 @@
-
 const apiURL = "http://localhost:8088";
 const applicationElement = document.querySelector(".giffygram");
 
+
 const applicationState = {
-  currentUser: {
-    id: 1,
-    name: "Daniella Agnoletti",
-    email: "daniella@agnoletti.com",
-    password: "daniella",
-  },
+  currentUser: {},
   feed: {
     chosenTimespan: 0,
     chosenUser: null,

@@ -3,9 +3,12 @@ import { postList } from "../feed/PostList.js"
 import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
 import { createDirectMessage } from "../message/MessageForm.js"
+import { getCurrentUser } from "../data/provider.js";
 
 
 export const Navigation = () => {
+    const currentUser = getCurrentUser();
+    let userName = currentUser.name;
     return `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
@@ -14,6 +17,7 @@ export const Navigation = () => {
             <div class="navigation__item navigation__name">
                 Giffygram 
             </div>
+            <div class="navigation__item navigation__name">Welcome! ${userName}</div>
             <div class="navigation__item navigation__search"> </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">

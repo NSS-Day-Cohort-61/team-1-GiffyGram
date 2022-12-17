@@ -1,9 +1,10 @@
-import { getUsers, setCurrentUser } from "../data/provider.js"
+import { getUsers, setCurrentUser, getCurrentUser } from "../data/provider.js"
 import { RegisterForm } from "./Register.js"
 
 
 document.addEventListener("click", clickEvent => {
     if (clickEvent.target.id === "loginButton") {
+        clickEvent.preventDefault()
         let foundUser = null
         const userState = getUsers()
 
@@ -18,7 +19,8 @@ document.addEventListener("click", clickEvent => {
 
         if (foundUser !== null) {
             localStorage.setItem("gg_user", foundUser.id)
-            setCurrentUser(foundUser)
+            let temp = getCurrentUser()
+            console.log(temp)
             document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
         }
     }
