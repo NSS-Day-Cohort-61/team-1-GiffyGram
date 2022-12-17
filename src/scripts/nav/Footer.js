@@ -1,89 +1,51 @@
-import {
-    setDisplayFavorites,
-    getDisplayFavorites
-  } from "../data/provider.js";
-
-import { getDisplaySinceYear, setDisplaySinceYear } from "../data/provider.js"
+import { getChosenTimespan, getDisplayFavorites, getUsers, getTimespans, getChosenUser, setDisplayFavorites, setChosenTimespan, setChosenUser } from "../data/provider.js"
 
 export const Footer = () => {
-    const displayYear = getDisplaySinceYear()
     let checkedStatus = getDisplayFavorites() ? "checked" : ""
-
+    const chosenTime = getChosenTimespan()
+    const chosenUser = getChosenUser()
+    const users = getUsers()
+    const timespans = getTimespans()
     let html = `
         <footer class="footer">
             <div class="footer__item">
                 Posts since
-                <select id="yearSelection">`
-                    if(displayYear === 2022) {
-                        html += `
-                        <option selected value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018>2018</option>
-                        <option value="2017">2017</option>`
+                <select id="timespanSelection">
+                    <option value="">Forever</option>`
+                    for(const timespan of timespans) {
+                        if(parseInt(chosenTime) === timespan.id) {
+                            html += `<option selected value="${timespan.id}">${timespan.name}</option>`;
+                        } 
+                        else {
+                        html += `<option value="${timespan.id}">${timespan.name}</option>`;
+                        }
                     }
-                    else if(displayYear === 2021) {
-                        html += `
-                        <option value="2022">2022</option>
-                        <option selected value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018>2018</option>
-                        <option value="2017">2017</option>`
-                    }
-                    else if(displayYear === 2020) {
-                        html += `
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option selected value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018>2018</option>
-                        <option value="2017">2017</option>`
-                    }
-                    else if(displayYear === 2019) {
-                        html += `
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option selected value="2019">2019</option>
-                        <option value="2018>2018</option>
-                        <option value="2017">2017</option>`
-                    }
-                    else if(displayYear === 2018) {
-                        html += `
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option selected value="2018>2018</option>
-                        <option value="2017">2017</option>`
-                    }
-                    else if(displayYear === 2017) {
-                        html += `
-                        <option value="2022">2022</option>
-                        <option value="2021">2021</option>
-                        <option value="2020">2020</option>
-                        <option value="2019">2019</option>
-                        <option value="2018>2018</option>
-                        <option selected value="2017">2017</option>`
-                    }
-                html += `</select>
-                <span id="postCount">[POSTCOUNT]<span>
+        html +=`</select>
             </div>
             <div class="footer__item">
                 Posts by user
                 <select class="userSelection">
-                    <option>Ray Medrano</option>
-                    <option>Mark Ellis</option>
-                    <option>D
+                    <option value="">All Users</option>`
+                    for(const user of users) {
+                        if(chosenUser === user.id) {
+                            html += `<option selected value="${user.id}">${user.name}</option>`;
+                        } 
+                        else {
+                        html += `<option value="${user.id}">${user.name}</option>`;
+                        }
+                    }
+                html+= `</select>
             </div>
             <div class="footer__item">
                 Show only favorites
                 <input type="checkbox" id="showOnlyFavorites" ${checkedStatus}>
             </div>
+            <div class="footer__item">
+                Total Posts
+                [POSTCOUNT]
+            </div>
        </footer> `
-       return html
+       return html;
 }
 
 document.addEventListener("click", (event) => {
@@ -98,9 +60,16 @@ document.addEventListener("click", (event) => {
 
 const applicationElement = document.querySelector(".giffygram")
 
-applicationElement.addEventListener("click", clickEvent => {
-    if(clickEvent.target.id === "yearSelection") {
-        setDisplaySinceYear(clickEvent.target.value)
+applicationElement.addEventListener("change", changeEvent => {
+    if(changeEvent.target.id === "timespanSelection") {
+        setChosenTimespan(changeEvent.target.value)
+        document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+    }
+})
+
+applicationElement.addEventListener("change", changeEvent => {
+    if(changeEvent.target.id === "userSelection") {
+        setChosenUser(changeEvent.target.value)
         document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
     }
 })

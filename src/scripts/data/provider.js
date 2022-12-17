@@ -10,16 +10,18 @@ const applicationState = {
     password: "scary",
   },
   feed: {
+    chosenTimespan: 0,
     chosenUser: null,
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: false,
-    displaySinceYear: parseInt(new Date().getFullYear())
   },
-  posts:[],
-  users:[],
-  messages:[],
-  favorites: []
+  users: [],
+  posts: [],
+  favorites: [],
+  messages: [],
+  timespans: [],
+  profiles: []
 };
 
 export const fetchUsers = () => {
@@ -46,15 +48,19 @@ export const fetchPosts = () => {
     });
 };
 
-export const getDisplaySinceYear = () => {
-  return applicationState.feed.displaySinceYear;
-}
-
 export const fetchFavorites = () => {
   return fetch(`${apiURL}/favorites`)
     .then((response) => response.json())
     .then((data) => {
       applicationState.favorites = data;
+    });
+};
+
+export const fetchTimespans = () => {
+  return fetch(`${apiURL}/timespans`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.timespans = data;
     });
 };
 
@@ -78,10 +84,21 @@ export const getFavorites = () => {
   return applicationState.favorites.map((f) => ({ ...f }));
 };
 
+export const getTimespans = () => {
+  return applicationState.timespans.map((t) => ({ ...t }));
+};
+
 export const getCurrentUser = () => {
   return { ...applicationState.currentUser };
 };
 
+export const getChosenTimespan = () => {
+  return applicationState.feed.chosenTimespan;
+}
+
+export const getChosenUser = () => {
+  return { ...applicationState.feed.chosenUser };
+}
 export const getDisplayFavorites = () => {
   return applicationState.feed.displayFavorites;
 };
@@ -95,8 +112,12 @@ export const setCurrentUser = (inputUser) => {
   applicationState.currentUser = inputUser
 }
 
-export const setDisplaySinceYear = (inputYear) => {
-  applicationState.feed.displaySinceYear = inputYear
+export const setChosenUser = (inputUser) => {
+  applicationState.feed.chosenUser = inputUser
+}
+
+export const setChosenTimespan = (inputTimespan) => {
+  applicationState.feed.chosenTimespan = inputTimespan
 }
 
 export const setDisplayFavorites = (input) => {
@@ -183,4 +204,33 @@ export const dateDisplayed = (post) =>{
   event = new Date(event)
   return event.toLocaleDateString('us-EG', options)
 
+}
+
+export const fetchProfiles = () => {
+  return fetch(`${apiURL}/profiles`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.profiles = data;
+    });
+};
+
+export const getProfiles = () => {
+  return applicationState.profiles.map((p) => ({ ...p }));
+};
+
+export const updateProfile = (userServiceRequest) => {
+  const fetchOptions = {
+      method: "POST",
+      headers: {
+          "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userServiceRequest)
+  }
+
+
+  return fetch(`${apiURL}/profiles`, fetchOptions)
+      .then(response => response.json())
+      .then(() => {
+          mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
+      })
 }
