@@ -23,6 +23,24 @@
       "email": "matthew@m.com",
       "password": "matthew",
       "id": 4
+    },
+    {
+      "name": "billy",
+      "email": "billy@bob.com",
+      "password": "billybob",
+      "id": 5
+    },
+    {
+      "name": "bob",
+      "email": "bob@billy.com",
+      "password": "bobbilly",
+      "id": 6
+    },
+    {
+      "name": "abc",
+      "email": "abc@a.com",
+      "password": "abc",
+      "id": 7
     }
   ],
   "posts": [
@@ -128,6 +146,24 @@
       "bio": "here to have fun",
       "userId": 1,
       "id": 2
+    },
+    {
+      "picture": "https://64.media.tumblr.com/8d9e048dbf734488586fb65f924c8d27/tumblr_oyk0zy9VSX1ts598co1_1280.gifv",
+      "bio": "i am billy bob",
+      "userId": 5,
+      "id": 3
+    },
+    {
+      "picture": "https://i.pinimg.com/originals/7a/67/15/7a6715fee2ba44ea97428f0d888a7e9b.gif",
+      "bio": "#pizza4life",
+      "userId": 6,
+      "id": 4
+    },
+    {
+      "picture": "https://media.tenor.com/USwCwsDi-YAAAAAC/donut-doughnut.gif",
+      "bio": "abc",
+      "userId": 7,
+      "id": 5
     }
   ]
 }
