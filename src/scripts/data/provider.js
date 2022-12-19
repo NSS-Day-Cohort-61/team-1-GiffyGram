@@ -59,6 +59,14 @@ export const fetchTimespans = () => {
     });
 };
 
+export const fetchProfiles = () => {
+  return fetch(`${apiURL}/profiles`)
+    .then((response) => response.json())
+    .then((data) => {
+      applicationState.profiles = data;
+    });
+};
+
 export const getPostEntryStatus = () => {
   return applicationState.feed.displayPostEntry;
 };
@@ -96,6 +104,10 @@ export const getChosenUser = () => {
 }
 export const getDisplayFavorites = () => {
   return applicationState.feed.displayFavorites;
+};
+
+export const getProfiles = () => {
+  return applicationState.profiles.map((p) => ({ ...p }));
 };
 
 export const setPostEntryStatus = (input) => {
@@ -152,13 +164,13 @@ export const sendFavorites = (favObj) => {
     });
 };
 
-export const sendUsers = (userServiceRequest) => {
+export const sendUsers = (userObj) => {
   const fetchOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
     },
-    body: JSON.stringify(userServiceRequest),
+    body: JSON.stringify(userObj),
   };
 
   return fetch(`${apiURL}/users`, fetchOptions)
@@ -168,22 +180,14 @@ export const sendUsers = (userServiceRequest) => {
     });
 };
 
-export const deleteFavorite = (favoriteId) => {
-  return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
-  .then(() => {
-    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
-  })
-}
-
-export const sendMessages = (userServiceRequest) => {
+export const sendMessages = (messageObj) => {
   const fetchOptions = {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(userServiceRequest)
+      body: JSON.stringify(messageObj)
   }
-
 
   return fetch(`${apiURL}/messages`, fetchOptions)
       .then(response => response.json())
@@ -192,36 +196,36 @@ export const sendMessages = (userServiceRequest) => {
       })
 }
 
+export const deleteFavorite = (favoriteId) => {
+  return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+  })
+}
+
+export const deletePost = (postId) => {
+  return fetch(`${apiURL}/posts/${postId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
+
 export const dateDisplayed = (post) =>{
   let event = post.date
   const options = {year: 'numeric', month: 'short', day: 'numeric' };
 
   event = new Date(event)
   return event.toLocaleDateString('us-EG', options)
-
 }
 
-export const fetchProfiles = () => {
-  return fetch(`${apiURL}/profiles`)
-    .then((response) => response.json())
-    .then((data) => {
-      applicationState.profiles = data;
-    });
-};
-
-export const getProfiles = () => {
-  return applicationState.profiles.map((p) => ({ ...p }));
-};
-
-export const updateProfile = (userServiceRequest) => {
+export const updateProfile = (profileObj) => {
   const fetchOptions = {
       method: "POST",
       headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(userServiceRequest)
+      body: JSON.stringify(profileObj)
   }
-
 
   return fetch(`${apiURL}/profiles`, fetchOptions)
       .then(response => response.json())
@@ -229,3 +233,48 @@ export const updateProfile = (userServiceRequest) => {
           mainContainer.dispatchEvent(new CustomEvent("stateChanged"))
       })
 }
+
+export const updatePost = (postObj, postId) => {
+  const fetchOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postObj)
+  };
+
+  return fetch(`${apiURL}/posts/${postId}`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
+
+
+
+
+
+
+// export const sendUsers = (userServiceRequest) => {
+//   const fetchOptions = {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(userServiceRequest),
+//   };
+
+//   return fetch(`${apiURL}/users`, fetchOptions)
+//     .then((response) => response.json())
+//     .then(() => {
+//       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+//     });
+// };
+
+
+// export const deleteFavorite = (favoriteId) => {
+//   return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
+//   .then(() => {
+//     applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+//   })
+// }

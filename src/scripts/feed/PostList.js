@@ -1,5 +1,5 @@
 import { postEntryForm } from "./PostEntry.js";
-import { getUsers, getPosts, getChosenTimespan, getCurrentUser, getDisplayFavorites, getFavorites, sendFavorites, deleteFavorite, dateDisplayed } from "../data/provider.js";
+import { getUsers, getPosts, getChosenTimespan, getCurrentUser, getDisplayFavorites, getFavorites, sendFavorites, deleteFavorite, dateDisplayed, deletePost } from "../data/provider.js";
 
 //gif title
 //gif
@@ -71,7 +71,7 @@ export const postList = () =>{
     let filteredPosts = filterByTimespan(chosenTimespan)
 
     if (getDisplayFavorites()) {
-      filteredPosts = favoritesFilter(filteredPosts);
+      filteredPosts = favoritesFilter(filteredPosts, getCurrentUser().id);
     }
     
     let html = `${postEntryForm()}`;
@@ -91,27 +91,31 @@ export const postList = () =>{
         }
       });
       html += `
-                <section class="post" id="${post.id}">
-                    <h2 class="post__title">${post.postTitle}</h2>
-                        <div>
-                            <img class="post__image" src="${post.postURL}">
-                        </div>
-    
-                        <div class="post__description">
-                            ${post.postDescription}
-                        </div>
-    
-                        <div class="post__tagline">
-                            posted by ${foundUser.name} on ${dateDisplayed(post)}
-                        </div>
-    
-                        <div class="post__actions">
-                            <img id="favoritePost--${
-                              post.id
-                            }" src="images/favorite-star-${starColor}.svg" height="25" width="25">
-                            <img id="blockPost" src="images/block.svg" height="25" width="25">
-                    </div>
-                </section>`;
+        <section class="post" id="${post.id}">
+            <h2 class="post__title">${post.postTitle}</h2>
+                <div>
+                    <img class="post__image" src="${post.postURL}">
+                </div>
+
+                <div class="post__description">
+                    ${post.postDescription}
+                </div>
+
+                <div class="post__tagline">
+                    posted by ${foundUser.name} on ${dateDisplayed(post)}
+                </div>
+
+                <div class="post__actions">
+                    <img class="clickable" id="favoritePost--${post.id}" src="images/favorite-star-${starColor}.svg" height="25" width="25">`
+        if(post.userId === currentUser.id){
+          html += 
+          `<img class="clickable" id="blockPost--${post.id}" src="images/block.svg" height="25" width="25">
+          <img class="clickable" id="editPost--${post.id}" src="images/edit.svg" height="25" width="25">
+          `
+        }    
+                    
+        html += `</div>
+        </section>`;
   });
   return html;
 };
@@ -134,10 +138,22 @@ document.addEventListener("click", (event) => {
   }
 });
 
+
+document.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("blockPost")) {
+    let [, postId] = event.target.id.split("--");
+    postId = parseInt(postId);
+    deletePost(postId);
+  }
+})
+
+
+
 const timespanStr = (postDate) => {
   let event = new Date(postDate)
   return event.toUTCString();
 }
+
 function findFavoriteObj(postId, userId) {
   const favorites = getFavorites();
   const foundFavorite = favorites.find((favorite) => {
@@ -146,11 +162,12 @@ function findFavoriteObj(postId, userId) {
   return foundFavorite;
 }
 
-function favoritesFilter(postsArray) {
+function favoritesFilter(postsArray, userId) {
   const favorites = getFavorites();
   return postsArray.filter((post) => {
     return favorites.find((favorite) => {
-      return favorite.postId === post.id;
+      return favorite.postId === post.id && favorite.userId === userId;
     });
   });
 }
+
