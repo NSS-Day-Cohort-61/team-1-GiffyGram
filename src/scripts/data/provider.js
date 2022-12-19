@@ -6,10 +6,11 @@ const applicationState = {
   currentUser: {},
   feed: {
     chosenTimespan: 0,
-    chosenUser: null,
+    chosenUser: 0,
     displayFavorites: false,
     displayMessages: false,
     displayPostEntry: false,
+    displayPostCount: null
   },
   users: [],
   posts: [],
@@ -91,8 +92,12 @@ export const getChosenTimespan = () => {
   return applicationState.feed.chosenTimespan;
 }
 
+export const getDisplayPostCount = () => {
+  return applicationState.feed.displayPostCount;
+}
+
 export const getChosenUser = () => {
-  return { ...applicationState.feed.chosenUser };
+  return applicationState.feed.chosenUser;
 }
 export const getDisplayFavorites = () => {
   return applicationState.feed.displayFavorites;
@@ -113,6 +118,10 @@ export const setChosenUser = (inputUser) => {
 
 export const setChosenTimespan = (inputTimespan) => {
   applicationState.feed.chosenTimespan = inputTimespan
+}
+
+export const setDisplayPostCount = (inputCount) => {
+  applicationState.feed.displayPostCount = inputCount
 }
 
 export const setDisplayFavorites = (input) => {
