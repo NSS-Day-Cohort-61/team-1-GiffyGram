@@ -4,6 +4,7 @@ import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
 import { createDirectMessage } from "../message/MessageForm.js"
 import { getCurrentUser } from "../data/provider.js";
+import { displayMessagesPage } from "../friends/DirectMessage.js"
 
 
 export const Navigation = () => {
@@ -21,7 +22,7 @@ export const Navigation = () => {
             <div class="navigation__item navigation__search"> </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
-                <div class="notification__count"> 0 </div>
+                <div class="notification__count" id="notificationIcon"> 0 </div>
             </div>
             <div class="navigation__item navigation__profile">
             <button id="profile">Profile</button>
@@ -56,6 +57,13 @@ applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "directMessageIcon") {
         document.querySelector("#message__form__popup").innerHTML = createDirectMessage()
         // document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+    }
+}
+)
+applicationElement.addEventListener("click", clickEvent => {
+    if(clickEvent.target.id === "notificationIcon") {
+       document.querySelector(".giffygram__feed").innerHTML = displayMessagesPage()
+     
     }
 }
 )

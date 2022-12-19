@@ -1,6 +1,7 @@
 import { Footer } from "./nav/Footer.js"
 import { Navigation } from "./nav/Navigation.js"
 import { postList } from "./feed/PostList.js"
+import { displayMessagesPage } from "./friends/DirectMessage.js"
 
 export const GiffyGram = () => {
 

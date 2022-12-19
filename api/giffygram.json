@@ -100,15 +100,45 @@
   "messages": [
     {
       "userId": 2,
-      "C": 1,
-      "messageText": "hello chris",
+      "reipientId": 2,
+      "messageText": "first",
       "id": 1
     },
     {
       "userId": 2,
       "reipientId": 2,
-      "messageText": "hello marek",
+      "messageText": "second",
       "id": 2
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "third",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "fourth",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "Hello",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "yes",
+      "id": 6
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "thread",
+      "id": 7
     }
   ],
   "timespans": [

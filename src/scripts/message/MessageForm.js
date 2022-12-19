@@ -19,7 +19,7 @@ const users = getUsers()
 
 export const createDirectMessage = () => {
     return `
-    <div class="directMessage">
+    <div class="directMessage" id="msg__overlay">
         
         <h3> Direct Message</h3>
             <div>
