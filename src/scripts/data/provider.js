@@ -249,32 +249,3 @@ export const updatePost = (postObj, postId) => {
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
   })
 }
-
-
-
-
-
-
-// export const sendUsers = (userServiceRequest) => {
-//   const fetchOptions = {
-//     method: "POST",
-//     headers: {
-//       "Content-Type": "application/json",
-//     },
-//     body: JSON.stringify(userServiceRequest),
-//   };
-
-//   return fetch(`${apiURL}/users`, fetchOptions)
-//     .then((response) => response.json())
-//     .then(() => {
-//       applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
-//     });
-// };
-
-
-// export const deleteFavorite = (favoriteId) => {
-//   return fetch(`${apiURL}/favorites/${favoriteId}`, { method: "DELETE" })
-//   .then(() => {
-//     applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
-//   })
-// }

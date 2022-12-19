@@ -65,6 +65,14 @@
       "userId": 1,
       "date": "2022-12-16T20:09:36.989Z",
       "id": 5
+    },
+    {
+      "postTitle": "it's friday",
+      "postURL": "https://i.giphy.com/media/l0Exm64tdMJFHBFIc/giphy.webp",
+      "postDescription": "#yes",
+      "userId": 1,
+      "date": "2022-12-16T21:34:41.290Z",
+      "id": 6
     }
   ],
   "favorites": [],
