@@ -43,6 +43,7 @@ export const RegisterForm = () => {
 
 
 document.addEventListener("click", clickEvent => {
+    clickEvent.preventDefault()
     if (clickEvent.target.id === "registerButton") {
         const email = document.querySelector("input[name='email']").value
         const name = document.querySelector("input[name='name']").value

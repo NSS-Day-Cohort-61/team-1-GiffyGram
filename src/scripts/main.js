@@ -14,7 +14,8 @@ export const renderApp = () =>  {
     .then(() => fetchProfiles())
         .then(() => {
             if (user) {
-                setCurrentUser(getUsers().find((user) => user.id === parseInt(localStorage.getItem("gg_user"))))
+                let currentUser = getUsers().find((user) => user.id === parseInt(localStorage.getItem("gg_user"))) || {}; 
+                setCurrentUser(currentUser)
                 applicationElement.innerHTML = GiffyGram()
                 
             } else {

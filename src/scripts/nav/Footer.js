@@ -1,4 +1,4 @@
-import { getChosenTimespan, getDisplayFavorites, getUsers, getTimespans, getChosenUser, setDisplayFavorites, setChosenTimespan, setChosenUser } from "../data/provider.js"
+import { getChosenTimespan, getDisplayFavorites, getUsers, getTimespans, getChosenUser, setDisplayFavorites, setChosenTimespan, setChosenUser, getDisplayPostCount } from "../data/provider.js"
 
 export const Footer = () => {
     let checkedStatus = getDisplayFavorites() ? "checked" : ""
@@ -24,14 +24,14 @@ export const Footer = () => {
             </div>
             <div class="footer__item">
                 Posts by user
-                <select class="userSelection">
-                    <option value="">All Users</option>`
+                <select id="userSelection">
+                    <option value="0">All Users</option>`
                     for(const user of users) {
-                        if(chosenUser === user.id) {
+                        if(parseInt(chosenUser) === user.id) {
                             html += `<option selected value="${user.id}">${user.name}</option>`;
                         } 
                         else {
-                        html += `<option value="${user.id}">${user.name}</option>`;
+                            html += `<option value="${user.id}">${user.name}</option>`;
                         }
                     }
                 html+= `</select>
@@ -41,8 +41,8 @@ export const Footer = () => {
                 <input type="checkbox" id="showOnlyFavorites" ${checkedStatus}>
             </div>
             <div class="footer__item">
-                Total Posts
-                [POSTCOUNT]
+                Total Posts Displayed
+                ${getDisplayPostCount()}
             </div>
        </footer> `
        return html;
