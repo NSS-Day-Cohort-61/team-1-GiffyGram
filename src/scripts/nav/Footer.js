@@ -25,7 +25,7 @@ export const Footer = () => {
             <div class="footer__item">
                 Posts by user
                 <select id="userSelection">
-                    <option value="">All Users</option>`
+                    <option value="0">All Users</option>`
                     for(const user of users) {
                         if(parseInt(chosenUser) === user.id) {
                             html += `<option selected value="${user.id}">${user.name}</option>`;
