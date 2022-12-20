@@ -1,4 +1,4 @@
-import { postEntryForm } from "./PostEntry.js";
+import { postEntryForm, editPostForm } from "./PostEntry.js";
 import {
   getUsers,
   getPosts,
@@ -103,7 +103,9 @@ export const postList = () => {
     filteredPosts = favoritesFilter(filteredPosts, getCurrentUser().id);
   }
 
-  let html = `${postEntryForm()}`;
+  let html = `
+  <div id="edit_PostForm" class="message__overlay"></div>
+  ${postEntryForm()}`;
 
   filteredPosts.map((post) => {
     const favorites = getFavorites();
@@ -154,6 +156,15 @@ export const postList = () => {
 
   return html;
 };
+
+document.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("editPost")) {
+    let [, postId] = event.target.id.split("--");
+    postId = parseInt(postId);
+    document.getElementById('edit_PostForm').innerHTML = editPostForm(postId)
+    document.getElementById('edit_PostForm').style.border = "3px solid black"
+  }
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.id.startsWith("profiles")) {

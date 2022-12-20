@@ -11,7 +11,7 @@ export const Footer = () => {
             <div class="footer__item">
                 Posts since
                 <select id="timespanSelection">
-                    <option value="">Forever</option>`
+                    <option value="0">Forever</option>`
                     for(const timespan of timespans) {
                         if(parseInt(chosenTime) === timespan.id) {
                             html += `<option selected value="${timespan.id}">${timespan.name}</option>`;
