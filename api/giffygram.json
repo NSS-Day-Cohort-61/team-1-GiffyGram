@@ -101,44 +101,38 @@
     {
       "userId": 2,
       "reipientId": 2,
-      "messageText": "first",
+      "messageText": "Hello",
       "id": 1
     },
     {
       "userId": 2,
       "reipientId": 2,
-      "messageText": "second",
+      "messageText": "thread",
       "id": 2
     },
     {
       "userId": 2,
-      "reipientId": 2,
-      "messageText": "third",
+      "reipientId": 1,
+      "messageText": "testing",
       "id": 3
     },
     {
       "userId": 2,
-      "reipientId": 2,
-      "messageText": "fourth",
+      "reipientId": 3,
+      "messageText": "testing",
       "id": 4
     },
     {
       "userId": 2,
-      "reipientId": 2,
-      "messageText": "Hello",
+      "reipientId": 4,
+      "messageText": "testing",
       "id": 5
     },
     {
       "userId": 2,
       "reipientId": 2,
-      "messageText": "yes",
+      "messageText": "hello",
       "id": 6
-    },
-    {
-      "userId": 2,
-      "reipientId": 2,
-      "messageText": "thread",
-      "id": 7
     }
   ],
   "timespans": [

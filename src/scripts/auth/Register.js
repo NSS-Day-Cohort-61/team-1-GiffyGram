@@ -43,6 +43,7 @@ export const RegisterForm = () => {
 
 
 document.addEventListener("click", clickEvent => {
+    clickEvent.preventDefault()
     if (clickEvent.target.id === "registerButton") {
         const email = document.querySelector("input[name='email']").value
         const name = document.querySelector("input[name='name']").value
@@ -64,7 +65,7 @@ document.addEventListener("click", clickEvent => {
             }
             else {
                 sendUsers(dataToSendToAPI)
-                document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+                document.querySelector(".giffygram").innerHTML = LoginForm()
             }
         }
        

@@ -6,11 +6,12 @@ import { getCurrentUser, getUsers, sendMessages } from "../data/provider.js";
 
 const userMap = () => {
 const users = getUsers()
+const current = getCurrentUser()
    return users.map(
         (user) => {
-            
-            return `
-            <option value="${user.id}">${user.name}</option>`
+            if (user.id !== current.id)
+           { return `
+            <option value="${user.id}">${user.name}</option>`}
         }
         ).join("")
 }
@@ -58,10 +59,9 @@ applicationElement.addEventListener("click", clickEvent => {
 applicationElement.addEventListener("click", clickEvent => {
     if(clickEvent.target.id === "directMessage__submit") {
         const sender = getCurrentUser()
-
         const text = document.querySelector("input[name='message']").value
         const recipient = document.querySelector("select[id='recipientId']").value
-        
+      
         
     
         let messageDetails = {
@@ -70,8 +70,11 @@ applicationElement.addEventListener("click", clickEvent => {
             messageText: text
         };
     
-        
-        sendMessages(messageDetails);
+        if (!sender || !text || !recipient) {
+            window.alert("Please out all entries")
+        }
+        else 
+       { sendMessages(messageDetails);}
 
 
 
@@ -80,3 +83,9 @@ applicationElement.addEventListener("click", clickEvent => {
     }
 }
 )
+
+document.querySelector(".giffygram").addEventListener("click", clickEvent => {
+    if (clickEvent.target.class === "dm__receipt" || clickEvent.target.class === "msg__thread"){
+        window.alert("click")
+    }
+})

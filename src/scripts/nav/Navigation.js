@@ -67,3 +67,9 @@ applicationElement.addEventListener("click", clickEvent => {
     }
 }
 )
+document.querySelector(".giffygram").addEventListener("click", clickEvent => {
+    console.log("click find")
+    if (clickEvent.target.id === "dm__receipt" || clickEvent.target.id === "msg__thread"){
+        window.alert("click")
+    }
+})
