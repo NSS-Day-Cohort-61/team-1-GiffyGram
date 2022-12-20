@@ -3,6 +3,7 @@ import { RegisterForm } from "./Register.js"
 
 
 document.addEventListener("click", clickEvent => {
+    clickEvent.preventDefault()
     if (clickEvent.target.id === "loginButton") {
         clickEvent.preventDefault()
         let foundUser = null
