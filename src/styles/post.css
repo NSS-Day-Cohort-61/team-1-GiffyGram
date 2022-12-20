@@ -12,7 +12,7 @@
 }
 
 .newPost__input {
-    width: 30rem;
+    width: 100%;
     margin: 0.5rem 0;
 }
 
@@ -75,4 +75,19 @@
 
 .clickable {
     cursor: pointer;
+}
+
+.message__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background-color: white;
+    margin-top: 150px;
+    margin: 300px auto;
+    width: 75%;
+}
+
+.edit__post {
+    margin: 5% 10%;
 }
