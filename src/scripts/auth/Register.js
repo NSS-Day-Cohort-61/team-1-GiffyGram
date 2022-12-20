@@ -65,7 +65,7 @@ document.addEventListener("click", clickEvent => {
             }
             else {
                 sendUsers(dataToSendToAPI)
-                document.querySelector(".giffygram").dispatchEvent(new CustomEvent("stateChanged"))
+                document.querySelector(".giffygram").innerHTML = LoginForm()
             }
         }
        
