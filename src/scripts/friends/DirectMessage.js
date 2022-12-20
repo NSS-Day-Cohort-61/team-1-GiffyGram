@@ -14,8 +14,8 @@ export const displayMessagesPage = () => {
 
         messages.map(
             (message) => {
-                if (message.reipientId === user.id){
-                    html += `<div id="dm__receipt"> From: ${
+                if (message.recipientId === user.id){
+                    html += `<div id="dm__receipt" class="markRead__${message.id}"> From: ${
                         users.map(
                             (u) => {
                                 if (message.userId === u.id){
@@ -26,7 +26,7 @@ export const displayMessagesPage = () => {
                         
                     }
                         
-                        <div id="msg__thread">    ${message.messageText} </div>
+                        <div id="msg__thread" class="markRead__${message.id}">    ${message.messageText} </div>
                         <div class="msg__reply"> Reply Button </div>
                     </div>`
                 }

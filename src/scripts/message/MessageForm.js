@@ -66,7 +66,7 @@ applicationElement.addEventListener("click", clickEvent => {
     
         let messageDetails = {
             userId: parseInt(sender.id),
-            reipientId: parseInt(recipient),
+            recipientId: parseInt(recipient),
             messageText: text
         };
     

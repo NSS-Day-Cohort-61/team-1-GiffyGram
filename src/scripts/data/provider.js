@@ -267,3 +267,32 @@ export const updatePost = (postObj, postId) => {
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
   })
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+export const updateMessages = (msgObj, msgId) => {
+  const fetchOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(msgObj)
+  };
+
+  return fetch(`${apiURL}/messages/${msgId}`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
