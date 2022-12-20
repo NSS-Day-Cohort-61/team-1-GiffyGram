@@ -107,14 +107,44 @@
       "id": 7
     }
   ],
-  "favorites": [
+  "messages": [
     {
-      "postId": 7,
-      "userId": 1,
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "Hello",
       "id": 1
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "thread",
+      "id": 2
+    },
+    {
+      "userId": 2,
+      "reipientId": 1,
+      "messageText": "testing",
+      "id": 3
+    },
+    {
+      "userId": 2,
+      "reipientId": 3,
+      "messageText": "testing",
+      "id": 4
+    },
+    {
+      "userId": 2,
+      "reipientId": 4,
+      "messageText": "testing",
+      "id": 5
+    },
+    {
+      "userId": 2,
+      "reipientId": 2,
+      "messageText": "hello",
+      "id": 6
     }
   ],
-  "messages": [],
   "timespans": [
     {
       "id": 1,
@@ -163,6 +193,13 @@
       "bio": "abc",
       "userId": 7,
       "id": 5
+    }
+  ],
+  "favorites": [
+    {
+      "postId": 6,
+      "userId": 2,
+      "id": 1
     }
   ]
 }

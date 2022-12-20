@@ -107,6 +107,7 @@ export const getDisplayPostCount = () => {
 export const getChosenUser = () => {
   return applicationState.feed.chosenUser;
 }
+
 export const getDisplayFavorites = () => {
   return applicationState.feed.displayFavorites;
 };
@@ -189,7 +190,15 @@ export const sendUsers = (userObj) => {
     });
 };
 
-export const sendMessages = (messageObj) => {
+
+export const deleteMessage = (messageId) => {
+  return fetch(`${apiURL}/messages/${messageId}`, { method: "DELETE" })
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"));
+  })
+}
+
+export const sendMessages = (userServiceRequest) => {
   const fetchOptions = {
       method: "POST",
       headers: {

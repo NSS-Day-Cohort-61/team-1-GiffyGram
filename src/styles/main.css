@@ -65,8 +65,10 @@ h1, h2, h3, h4, h5, h6 {
     width: 100%;
 }
 
-
-
 #logo {
     cursor: pointer;
+}
+
+.giffygram {
+    background-color: rgba(248, 223, 202, 0.103);
 }
