@@ -91,11 +91,11 @@
       "id": 5
     },
     {
-      "postTitle": "it's TUESDAY",
+      "postTitle": "it's TUESDAYYY",
       "postURL": "https://i.giphy.com/media/l0Exm64tdMJFHBFIc/giphy.webp",
       "postDescription": "#ohyeah",
       "userId": 1,
-      "date": "2022-12-20T18:39:34.328Z",
+      "date": "2022-12-20T18:56:57.206Z",
       "id": 6
     },
     {
@@ -106,6 +106,8 @@
       "date": "2022-12-19T20:12:30.536Z",
       "id": 7
     }
+  ],
+  "favorites": [
   ],
   "messages": [
     {
@@ -193,13 +195,6 @@
       "bio": "abc",
       "userId": 7,
       "id": 5
-    }
-  ],
-  "favorites": [
-    {
-      "postId": 6,
-      "userId": 2,
-      "id": 1
     }
   ]
 }
