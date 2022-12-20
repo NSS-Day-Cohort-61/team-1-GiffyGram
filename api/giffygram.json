@@ -107,7 +107,13 @@
       "id": 7
     }
   ],
-  "favorites": [],
+  "favorites": [
+    {
+      "postId": 7,
+      "userId": 1,
+      "id": 1
+    }
+  ],
   "messages": [],
   "timespans": [
     {
