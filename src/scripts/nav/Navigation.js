@@ -3,22 +3,30 @@ import { postList } from "../feed/PostList.js"
 import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
 import { createDirectMessage } from "../message/MessageForm.js"
-import { getCurrentUser } from "../data/provider.js";
+import { getCurrentUser, setCurrentUser } from "../data/provider.js";
 import { displayMessagesPage } from "../friends/DirectMessage.js"
 
 
 export const Navigation = () => {
     const currentUser = getCurrentUser();
-    let userName = currentUser.name;
-    return `
+    let userName;
+    if(currentUser.name) {
+        userName = currentUser.name;
+    }
+    let html = `
         <nav class="navigation">
             <div class="navigation__item navigation__icon">
                 <img src="/images/pb.png" alt="Giffygram icon" id="logo">
             </div>
             <div class="navigation__item navigation__name">
                 Giffygram 
-            </div>
-            <div class="navigation__item navigation__name">Welcome! ${userName}</div>
+            </div>`
+            if (userName) {
+                html += `<div class="navigation__item navigation__name">Welcome, ${userName}!</div>`
+            } else {
+                html += `<div class="navigation__item navigation__name">Welcome!</div>`
+            }
+            html +=`
             <div class="navigation__item navigation__search"> </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
@@ -26,17 +34,28 @@ export const Navigation = () => {
             </div>
             <div class="navigation__item navigation__profile">
             <button id="profile">Profile</button>
-            </div>
-            <div class="navigation__item navigation__logout">
-                <button id="logout">Logout</button>
-            </div>
-       </nav> `
+            </div>`
+            if (!Object.keys(currentUser).length) {
+            html += 
+            `<div class="navigation__item navigation__logout">
+                <button id="logout">Log in</button>
+            </div>`
+            } else {
+                html += 
+                `<div class="navigation__item navigation__logout">
+                    <button id="logout">Logout</button>
+                </div>`
+            }
+            html += `</nav> `
+       return html
 }
 
 const applicationElement = document.querySelector(".giffygram")
 
 applicationElement.addEventListener("click", clickEvent => {
         if(clickEvent.target.id === "logout") {
+            localStorage.setItem("gg_user", 0)
+            setCurrentUser({})
             applicationElement.innerHTML = LoginForm()
         }
     }

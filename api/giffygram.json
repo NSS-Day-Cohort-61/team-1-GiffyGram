@@ -23,6 +23,30 @@
       "email": "matthew@m.com",
       "password": "matthew",
       "id": 4
+    },
+    {
+      "name": "billy",
+      "email": "billy@bob.com",
+      "password": "billybob",
+      "id": 5
+    },
+    {
+      "name": "bob",
+      "email": "bob@billy.com",
+      "password": "bobbilly",
+      "id": 6
+    },
+    {
+      "name": "abc",
+      "email": "abc@a.com",
+      "password": "abc",
+      "id": 7
+    },
+    {
+      "name": "peter",
+      "email": "pete@r.com",
+      "password": "peter",
+      "id": 9
     }
   ],
   "posts": [
@@ -73,28 +97,14 @@
       "userId": 1,
       "date": "2022-12-16T21:34:41.290Z",
       "id": 6
-    }
-  ],
-  "favorites": [
-    {
-      "postId": 6,
-      "userId": 1,
-      "id": 1
     },
     {
-      "postId": 5,
-      "userId": 1,
-      "id": 2
-    },
-    {
-      "postId": 6,
-      "userId": 3,
-      "id": 3
-    },
-    {
-      "postId": 5,
-      "userId": 3,
-      "id": 4
+      "postTitle": "hey i'm peter",
+      "postURL": "https://i.giphy.com/media/WiXMlla4ZFR8Q/giphy.webp",
+      "postDescription": "it's cool to be peter",
+      "userId": 9,
+      "date": "2022-12-19T20:12:30.536Z",
+      "id": 7
     }
   ],
   "messages": [
@@ -165,6 +175,24 @@
       "bio": "here to have fun",
       "userId": 1,
       "id": 2
+    },
+    {
+      "picture": "https://64.media.tumblr.com/8d9e048dbf734488586fb65f924c8d27/tumblr_oyk0zy9VSX1ts598co1_1280.gifv",
+      "bio": "i am billy bob",
+      "userId": 5,
+      "id": 3
+    },
+    {
+      "picture": "https://i.pinimg.com/originals/7a/67/15/7a6715fee2ba44ea97428f0d888a7e9b.gif",
+      "bio": "#pizza4life",
+      "userId": 6,
+      "id": 4
+    },
+    {
+      "picture": "https://media.tenor.com/USwCwsDi-YAAAAAC/donut-doughnut.gif",
+      "bio": "abc",
+      "userId": 7,
+      "id": 5
     }
   ]
 }
