@@ -67,11 +67,13 @@ applicationElement.addEventListener("click", clickEvent => {
         let messageDetails = {
             userId: parseInt(sender.id),
             recipientId: parseInt(recipient),
-            messageText: text
+            messageText: text,
+            isRead: false
+
         };
     
         if (!sender || !text || !recipient) {
-            window.alert("Please out all entries")
+            window.alert("Please fill out all entries")
         }
         else 
        { sendMessages(messageDetails);}

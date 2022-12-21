@@ -3,7 +3,7 @@ import { postList } from "../feed/PostList.js"
 import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
 import { createDirectMessage } from "../message/MessageForm.js"
-import { getCurrentUser, setCurrentUser, getMessages, updateMessages } from "../data/provider.js";
+import { getCurrentUser, setCurrentUser, getMessages, updateMessages, getUsers } from "../data/provider.js";
 import { displayMessagesPage } from "../friends/DirectMessage.js"
 
 
@@ -35,7 +35,7 @@ export const Navigation = () => {
                     messages.map(
                         (msg) => {
                             let notif = 0
-                            if (currentUser.id === msg.recipientId) {
+                            if (currentUser.id === msg.recipientId && !msg.isRead) {
                                 notif++
                             }
                             return notif
@@ -99,9 +99,37 @@ applicationElement.addEventListener("click", clickEvent => {
 }
 )
 document.querySelector(".giffygram").addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "dm__receipt" || clickEvent.target.id === "msg__thread"){
-        window.alert("click")
+        if (clickEvent.target.id.startsWith("markRead")) {
+            let [, msgId] = clickEvent.target.id.split("__")
+            msgId = parseInt(msgId)
+           
+            const users = getUsers()
+            const messages = getMessages()
+            const user = getCurrentUser()
+            messages.map(
+                (message) => {
+                    if (message.recipientId === user.id){
+                        return message.messageText
+                    }     
+                        }
+            ).join("")    
 
-        // updateMessages()
-    }
+
+            const postInformation = {
+                userId:  parseInt( messages.map((message) => 
+                {if (message.id === msgId)
+                        {return message.userId}}).join("")),
+
+                recipientId: user.id,
+
+                messageText:  messages.map((message) => {if (message.id === msgId){
+                            return message.messageText
+                        }  }).join("") ,
+                id: messages.map((message) => { if (message.recipientId === user.id){
+                    return message.id}  }).join(""),
+                isRead: true
+              }
+           
+            updateMessages(postInformation, msgId)
+        }
 })

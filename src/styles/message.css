@@ -60,7 +60,7 @@
     align-items: center;
 }
 
-#dm__receipt {
+.dm__receipt {
     /* background-color: rgb(209, 146, 209); */
     border: 4px solid rgb(107, 24, 24);
     display: flex;
@@ -71,7 +71,7 @@
     width: 59%;
 }
 
-#msg__thread{
+.msg__thread{
     height: 80%;
     background-color: rgba(207, 240, 248, 0.856);
 }

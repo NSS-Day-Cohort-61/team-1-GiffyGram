@@ -204,7 +204,7 @@ export const sendMessages = (userServiceRequest) => {
       headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(messageObj)
+      body: JSON.stringify(userServiceRequest)
   }
 
   return fetch(`${apiURL}/messages`, fetchOptions)
@@ -267,17 +267,6 @@ export const updatePost = (postObj, postId) => {
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
   })
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 
