@@ -101,7 +101,7 @@ document.addEventListener("click", (event) => {
       "textarea[name='edit_postDescription']"
     ).value;
     const currentUser = getCurrentUser();
-    const profilePayload = {
+    const postInformation = {
       postTitle: postTitle,
       postURL: postURL,
       postDescription: postDescription,
