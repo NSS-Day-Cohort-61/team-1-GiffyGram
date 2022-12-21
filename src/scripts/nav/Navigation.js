@@ -3,12 +3,13 @@ import { postList } from "../feed/PostList.js"
 import { Profile } from "../friends/Profile.js"
 import { GiffyGram } from "../GiffyGram.js"
 import { createDirectMessage } from "../message/MessageForm.js"
-import { getCurrentUser, setCurrentUser } from "../data/provider.js";
+import { getCurrentUser, setCurrentUser, getMessages, updateMessages, getUsers } from "../data/provider.js";
 import { displayMessagesPage } from "../friends/DirectMessage.js"
 
 
 export const Navigation = () => {
     const currentUser = getCurrentUser();
+    const messages = getMessages()
     let userName;
     if(currentUser.name) {
         userName = currentUser.name;
@@ -30,7 +31,18 @@ export const Navigation = () => {
             <div class="navigation__item navigation__search"> </div>
             <div class="navigation__item navigation__message">
                 <img id="directMessageIcon" src="/images/fountain-pen.svg" alt="Direct message">
-                <div class="notification__count" id="notificationIcon"> 0 </div>
+                <div class="notification__count" id="notificationIcon"> ${
+                    messages.map(
+                        (msg) => {
+                            let notif = 0
+                            if (currentUser.id === msg.recipientId && !msg.isRead) {
+                                notif++
+                            }
+                            return notif
+                        }
+                    ).reduce((accumulator, currentValue) =>
+                    accumulator + currentValue)
+                } </div>
             </div>
             <div class="navigation__item navigation__profile">
             <button id="profile">Profile</button>
@@ -87,7 +99,37 @@ applicationElement.addEventListener("click", clickEvent => {
 }
 )
 document.querySelector(".giffygram").addEventListener("click", clickEvent => {
-    if (clickEvent.target.id === "dm__receipt" || clickEvent.target.id === "msg__thread"){
-        window.alert("click")
-    }
+        if (clickEvent.target.id.startsWith("markRead")) {
+            let [, msgId] = clickEvent.target.id.split("__")
+            msgId = parseInt(msgId)
+           
+            const users = getUsers()
+            const messages = getMessages()
+            const user = getCurrentUser()
+            messages.map(
+                (message) => {
+                    if (message.recipientId === user.id){
+                        return message.messageText
+                    }     
+                        }
+            ).join("")    
+
+
+            const postInformation = {
+                userId:  parseInt( messages.map((message) => 
+                {if (message.id === msgId)
+                        {return message.userId}}).join("")),
+
+                recipientId: user.id,
+
+                messageText:  messages.map((message) => {if (message.id === msgId){
+                            return message.messageText
+                        }  }).join("") ,
+                id: messages.map((message) => { if (message.recipientId === user.id){
+                    return message.id}  }).join(""),
+                isRead: true
+              }
+           
+            updateMessages(postInformation, msgId)
+        }
 })
