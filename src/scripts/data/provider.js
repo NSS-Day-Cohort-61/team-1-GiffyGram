@@ -268,7 +268,21 @@ export const updatePost = (postObj, postId) => {
   })
 }
 
+export const updatingProfile = (postObj, profileId) => {
+  const fetchOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(postObj)
+  };
 
+  return fetch(`${apiURL}/profiles/${profileId}`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
 
 export const updateMessages = (msgObj, msgId) => {
   const fetchOptions = {
