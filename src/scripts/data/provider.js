@@ -204,7 +204,7 @@ export const sendMessages = (userServiceRequest) => {
       headers: {
           "Content-Type": "application/json"
       },
-      body: JSON.stringify(messageObj)
+      body: JSON.stringify(userServiceRequest)
   }
 
   return fetch(`${apiURL}/messages`, fetchOptions)
@@ -262,6 +262,24 @@ export const updatePost = (postObj, postId) => {
   };
 
   return fetch(`${apiURL}/posts/${postId}`, fetchOptions)
+  .then((response) => response.json())
+  .then(() => {
+    applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
+  })
+}
+
+
+
+export const updateMessages = (msgObj, msgId) => {
+  const fetchOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(msgObj)
+  };
+
+  return fetch(`${apiURL}/messages/${msgId}`, fetchOptions)
   .then((response) => response.json())
   .then(() => {
     applicationElement.dispatchEvent(new CustomEvent("stateChanged"))
