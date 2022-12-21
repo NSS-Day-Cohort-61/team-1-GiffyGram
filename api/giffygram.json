@@ -95,7 +95,7 @@
       "postURL": "https://i.giphy.com/media/l0Exm64tdMJFHBFIc/giphy.webp",
       "postDescription": "#ohyeah",
       "userId": 1,
-      "date": "2022-12-21T16:12:54.953Z",
+      "date": "2022-12-21T16:49:31.854Z",
       "id": 6
     },
     {
@@ -112,9 +112,9 @@
     {
       "userId": 2,
       "recipientId": 1,
-      "isRead": false,
       "messageText": "testing",
-      "id": 3
+      "id": 3,
+      "isRead": true
     },
     {
       "userId": 2,
@@ -144,13 +144,33 @@
       "id": 9,
       "isRead": true
     },
-   
     {
       "userId": 2,
       "recipientId": 9,
       "messageText": "hello peter",
+      "id": 11,
+      "isRead": true
+    },
+    {
+      "userId": null,
+      "recipientId": 9,
+      "messageText": "hey is it peter?",
+      "id": 12,
+      "isRead": true
+    },
+    {
+      "userId": 1,
+      "recipientId": 9,
+      "messageText": "who's peter?",
+      "id": 13,
+      "isRead": true
+    },
+    {
+      "userId": 9,
+      "recipientId": 1,
+      "messageText": "yes it's peter hi chris i'm peter",
       "isRead": false,
-      "id": 11
+      "id": 14
     }
   ],
   "timespans": [
