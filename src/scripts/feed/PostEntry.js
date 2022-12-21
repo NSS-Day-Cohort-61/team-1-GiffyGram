@@ -1,10 +1,17 @@
-import { getPostEntryStatus, setPostEntryStatus, sendPostEntry, getCurrentUser, getPosts, updatePost } from "../data/provider.js"
+import {
+  getPostEntryStatus,
+  setPostEntryStatus,
+  sendPostEntry,
+  getCurrentUser,
+  getPosts,
+  updatePost,
+} from "../data/provider.js";
 
 export const postEntryForm = () => {
   if (!getPostEntryStatus()) {
     return `
     <div class="miniMode" id="miniMode">Have a gif to post?</div>
-    `
+    `;
   } else {
     return `
     <div class="newPost">
@@ -19,13 +26,13 @@ export const postEntryForm = () => {
     <button id="newPost__submit">Post</button>
     <button id="newPost__cancel">Cancel</button>
     </div>
-    `
+    `;
   }
-}
+};
 
 export const editPostForm = (postId) => {
-  let posts = getPosts()
-  let foundPost = posts.find((post) => post.id === postId)
+  let posts = getPosts();
+  let foundPost = posts.find((post) => post.id === postId);
   return `
   <div class="edit__post">
     <h2>Edit Your Post</h2>
@@ -39,60 +46,68 @@ export const editPostForm = (postId) => {
     <button id="editPost__submit--${postId}">Post</button>
     <button id="edit_post_cancel">Cancel</button>
   </div>
-  `
-}
+  `;
+};
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "newPost__cancel") {
-    setPostEntryStatus(false)
+    setPostEntryStatus(false);
   }
-})
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "edit_post_cancel") {
-    document.getElementById('edit_PostForm').innerHTML = ""
-    document.getElementById('edit_PostForm').style.border = ""
+    document.getElementById("edit_PostForm").innerHTML = "";
+    document.getElementById("edit_PostForm").style.border = "";
   }
-})
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "miniMode") {
-    setPostEntryStatus(true)
+    setPostEntryStatus(true);
   }
-})
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.id === "newPost__submit") {
-    const postTitle = document.querySelector("input[name='postTitle']").value
-    const postURL = document.querySelector("input[name='postURL']").value
-    const postDescription = document.querySelector("textarea[name='postDescription']").value
-    const currentUser = getCurrentUser();
-    const postInformation = {
-      postTitle: postTitle,
-      postURL: postURL,
-      postDescription: postDescription,
-      userId: currentUser.id,
-      date: new Date()
+    if (Object.keys(getCurrentUser()).length === 0) {
+      window.alert("Please log in to post a gif!");
+    } else {
+      const postTitle = document.querySelector("input[name='postTitle']").value;
+      const postURL = document.querySelector("input[name='postURL']").value;
+      const postDescription = document.querySelector("textarea[name='postDescription']").value;
+      const currentUser = getCurrentUser();
+      const postInformation = {
+        postTitle: postTitle,
+        postURL: postURL,
+        postDescription: postDescription,
+        userId: currentUser.id,
+        date: new Date(),
+      };
+      sendPostEntry(postInformation);
     }
-    sendPostEntry(postInformation)
   }
-})
+});
 
 document.addEventListener("click", (event) => {
   if (event.target.id.startsWith("editPost__submit")) {
-    let [, postId] = event.target.id.split("--")
-    postId = parseInt(postId)
-    const postTitle = document.querySelector("input[name='edit_postTitle']").value
-    const postURL = document.querySelector("input[name='edit_postURL']").value
-    const postDescription = document.querySelector("textarea[name='edit_postDescription']").value
+    let [, postId] = event.target.id.split("--");
+    postId = parseInt(postId);
+    const postTitle = document.querySelector(
+      "input[name='edit_postTitle']"
+    ).value;
+    const postURL = document.querySelector("input[name='edit_postURL']").value;
+    const postDescription = document.querySelector(
+      "textarea[name='edit_postDescription']"
+    ).value;
     const currentUser = getCurrentUser();
     const profilePayload = {
       postTitle: postTitle,
       postURL: postURL,
       postDescription: postDescription,
       userId: currentUser.id,
-      date: new Date()
-    }
-    updatePost(postPayload, profileId)
+      date: new Date(),
+    };
+    updatePost(postInformation, postId);
   }
-})
+});

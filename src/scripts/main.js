@@ -13,15 +13,9 @@ export const renderApp = () =>  {
     .then(() => fetchMessages())
     .then(() => fetchProfiles())
         .then(() => {
-            if (user) {
-                let currentUser = getUsers().find((user) => user.id === parseInt(localStorage.getItem("gg_user"))) || {}; 
-                setCurrentUser(currentUser)
-                applicationElement.innerHTML = GiffyGram()
-                
-            } else {
-                applicationElement.innerHTML = LoginForm()
-            }
-            
+            let currentUser = getUsers().find((user) => user.id === parseInt(localStorage.getItem("gg_user"))) || {}; 
+            setCurrentUser(currentUser)
+            applicationElement.innerHTML = GiffyGram()
         })
 
 }
