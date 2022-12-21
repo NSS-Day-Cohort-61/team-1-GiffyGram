@@ -107,8 +107,12 @@
       "id": 7
     }
   ],
-
   "favorites": [
+    {
+      "postId": 6,
+      "userId": 2,
+      "id": 1
+    }
   ],
   "messages": [
     {
@@ -196,13 +200,12 @@
       "bio": "abc",
       "userId": 7,
       "id": 5
-    }
-  ],
-  "favorites": [
+    },
     {
-      "postId": 6,
-      "userId": 2,
-      "id": 1
+      "picture": "https://hansherzog.art/wp-content/uploads/440px-Montaigne_1578.jpg",
+      "bio": "meme'd out of his gourd - a proper lord",
+      "userId": 4,
+      "id": 6
     }
   ]
 }

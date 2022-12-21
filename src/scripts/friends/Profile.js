@@ -2,6 +2,7 @@ import {
   getCurrentUser,
   getProfiles,
   updateProfile,
+  updatingProfile
 } from "../data/provider.js";
 import { postList } from "../feed/PostList.js";
 import { GiffyGram } from "../GiffyGram.js";
@@ -31,17 +32,20 @@ export const Profile = (user = getCurrentUser()) => {
             <div class="profileBio">
             <h2>bio</h2>
             ${foundProfile.bio}
+            </div>
+            <div id="edit__profilePage">
+            <button id="editProfileButton">Edit Profile</button>
             </div>    
-        </section>`;   
-    }
-    
-    else if (!foundProfile && user.id && user.id !==currentUser.id) {
+        </section>`;
+  }
+
+  else if (!foundProfile && user.id && user.id !== currentUser.id) {
     return `
     ${Navigation()}
     <h3 class="profilePage">User has no profile!</h3>
     `
-    } 
-    else if (!foundProfile && user.id) {
+  }
+  else if (!foundProfile && user.id) {
     return `
         ${Navigation()}
         <div class="profileForm">
@@ -64,8 +68,26 @@ export const Profile = (user = getCurrentUser()) => {
     return `
     ${Navigation()}
     <h3 class="profilePage">Log in or register to create a profile!</h3>`
-    }
+  }
 };
+
+const editProfile = (profileId) => {
+  let profiles = getProfiles()
+  let foundProfile = profiles.find((profile) => profile.id === profileId)
+  return `
+  <div class="edit__profileForm">
+    <h2>Edit Your Profile</h2>
+    <div>
+      <input name="edit_profilePicture" class="editProfile__input" type="text" value="${foundProfile.picture}">
+    </div>
+    <div>
+      <input name="edit_profileBio" class="editProfile__input" type="text" value="${foundProfile.bio}">
+    </div>
+    <button id="editProfileConfirm--${profileId}">Confirm Changes</button>
+    <button id="editProfileCancel">Cancel</button>
+  </div>
+  `
+}
 
 const applicationElement = document.querySelector(".giffygram");
 
@@ -91,3 +113,40 @@ document.addEventListener("click", (event) => {
     applicationElement.innerHTML = Profile();
   }
 });
+
+document.addEventListener("click", (event) => {
+  if (event.target.id === "editProfileButton") {
+    let currentUser = getCurrentUser();
+    let profiles = getProfiles();
+
+    let foundProfile = profiles.find((profile) => {
+      return profile.userId === currentUser.id;
+    });
+    document.getElementById('edit__profilePage').innerHTML = editProfile(foundProfile.id)
+  }
+})
+
+document.addEventListener("click", (event) => {
+  if (event.target.id === "editProfileCancel") {
+    document.getElementById('edit__profilePage').innerHTML = `<button id="editProfileButton">Edit Profile</button>`
+  }
+})
+
+document.addEventListener("click", (event) => {
+  if (event.target.id.startsWith("editProfileConfirm")) {
+    let [, profileId] = event.target.id.split("--")
+    profileId = parseInt(profileId)
+    const profilePicture = document.querySelector("input[name='edit_profilePicture']").value
+    const profileBio = document.querySelector("input[name='edit_profileBio']").value
+    const currentUser = getCurrentUser();
+    const postInformation = {
+      picture: profilePicture,
+      bio: profileBio,
+      userId: currentUser.id,
+    }
+    updatingProfile(postInformation, profileId)
+      .then(() => {
+        document.getElementById('edit__profilePage').innerHTML = `<button id="editProfileButton">Edit Profile</button>`
+      })
+  }
+})

@@ -86,13 +86,13 @@ document.addEventListener("click", (event) => {
     const postURL = document.querySelector("input[name='edit_postURL']").value
     const postDescription = document.querySelector("textarea[name='edit_postDescription']").value
     const currentUser = getCurrentUser();
-    const postInformation = {
+    const profilePayload = {
       postTitle: postTitle,
       postURL: postURL,
       postDescription: postDescription,
       userId: currentUser.id,
       date: new Date()
     }
-    updatePost(postInformation, postId)
+    updatePost(postPayload, profileId)
   }
 })
